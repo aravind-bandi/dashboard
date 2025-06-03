@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Management - Dairy Farm</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/Dashboard/css/user.css">
+  
+  
+</head>
+
+<body>
+  <section id="content">
+
+    <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+    <!-- Overlay Menu -->
+ <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="orders/order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="products/productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customerss/customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="reports/report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics/analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock/stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue/revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="usermanagement/user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help/help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="setting/settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout/logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+
+      <input type="checkbox" id="switch-mode" hidden>
+      <label for="switch-mode" class="switch-mode"></label>
+
+      <a href="javascript:void(0)" class="language-icon">
+        <i class='bx bx-globe'></i>
+      </a>
+      <div class="language-dropdown">
+        <ul>
+          <li><a href="#" data-lang="en"><img
+                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+              America</a></li>
+          <li><a href="#" data-lang="es"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+              Spanish</a></li>
+          <li><a href="#" data-lang="fr"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+              French</a></li>
+          <li><a href="#" data-lang="de"><img src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+              German</a></li>
+          <li><a href="#" data-lang="zh"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+              Chinese</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+      <a href="javascript:void(0)" class="notification-trigger">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+
+      <!-- Notification Dropdown -->
+      <div class="notification-dropdown">
+        <ul>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                alt="John Doe" class="customer-img"
+                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+              <div class="notification-text">
+                <p><strong>John Doe</strong> just registered.</p>
+                <span class="time">2 mins ago</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                alt="Jane Smith" class="customer-img"
+                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+              <div class="notification-text">
+                <p><strong>Jane Smith</strong> updated their profile.</p>
+                <span class="time">10 mins ago</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Profile Pop-up -->
+      <div id="profilePopup" class="profile-popup">
+        <div class="profile-content">
+          <span class="close-btn" onclick="closeProfile()">&times;</span>
+          <img id="profileImage" class="profile-img" src="" alt="Profile">
+          <h2 id="profileName"></h2>
+          <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        </div>
+      </div>
+
+
+
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">Loading...</span>
+          <i class="arrow-down">▼</i>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div id="profileDropdown" class="dropdown-menu">
+          <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+          <a href="#" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
+
+      <!-- Profile Edit Modal -->
+      <div id="profileModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeProfileModal()">&times;</span>
+          <h2>Edit Profile</h2>
+          <form id="profileForm">
+            <label for="newName">Username:</label>
+            <input type="text" id="newName" required>
+
+            <label for="newAvatar">Upload Avatar:</label>
+            <input type="file" id="newAvatar" accept="image/*">
+
+            <button type="button" onclick="saveProfile()">Save</button>
+          </form>
+        </div>
+      </div>
+
+
+    </nav>
+    <div class="main-content">
+
+
+        <div class=" mt-5">
+            <h2 class="mb-3 text-center py-2 rounded text-white"  style="background: linear-gradient(135deg, #00A8CC, #007EA7);"><i class="bx bx-user me-2"></i>User Management</h2>
+            <button class="btn btn-primary mb-3 bttnn" data-bs-toggle="modal" data-bs-target="#userModal">Add User</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+        
+        <!-- User Form Modal -->
+        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userModalLabel">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="userForm">
+                            <div class="mb-3">
+                                <label for="userName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="userName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="userEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userRole" class="form-label">Role</label>
+                                <select class="form-control" id="userRole" required>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Employee">Employee</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userUsername" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="userUsername" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="userPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="editIndex">
+        <div class=" mt-4 dashboard-container">
+            <!-- User Statistics -->
+            <div class="statistics-container"  style="background: linear-gradient(135deg, #FF6F61, #D92027);">
+                <h2 class="text-white">User Statistics</h2>
+                <ul class="text-white">
+                    <li class="fs-3">Total Users: <span id="totalUsers">0</span></li>
+                    <li class="fs-3">Admin Users: <span id="adminUsers">0</span></li>
+                    <li class="fs-3">Managers: <span id="managerUsers">0</span></li>
+                    <li class="fs-3">Employees: <span id="employeeUsers">0</span></li>
+                </ul>
+            </div>
+            
+            <!-- Recent Activity Log -->
+            <div class="activity-container" style="background: linear-gradient(135deg, #6D5BBA, #8D58BF);">
+                <h2 class="text-white">Recent Activity</h2>
+                <h4 id="activityLog" class="text-white"></h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/Dashboard/js/user.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleNav() {
+    document.getElementById("myNav").classList.toggle("active");
+  }
+
+
+
+  document.querySelectorAll('.overlay a').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+
+
+</script>
+</body>
+
+</html>

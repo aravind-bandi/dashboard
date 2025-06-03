@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/Dashboard/css/customer.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>dashboard</title>
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <section id="content">
+
+    <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+      <a href="javascript:void(0)" class="language-icon arer">
+        <i class='bx bx-globe'></i>
+        <!-- <span class="badge">5</span> -->
+      </a>
+      <a href="javascript:void(0)" class="notification-trigger arer">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+      <span class="divider"></span>
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar"
+            src="https://static.vecteezy.com/system/resources/thumbnails/024/183/502/small/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg"
+            alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">srikanth</span>
+          <i class="arrow-down">▼</i>
+        </div>
+    </nav>
+    <div class="main-content">
+      <div class="container mt-4">
+        <h2 class="mb-3 text-center fs-1 bg-primary rounded">Customer Orders</h2>
+
+        <div class="table-responsive">
+          <div class="d-flex justify-content-between mb-3">
+            <input type="text" class="form-control search-bar" id="searchInput" placeholder="Search stock..."
+              onkeyup="filterTable()">
+            <button class="btn btn-primary btnn" onclick="addStock()">Add Stock</button>
+          </div>
+          <table class="table">
+            <thead class="table-light">
+              <tr>
+                <th>S.No</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Product</th>
+                <th>Amount ($)</th>
+                <th>Delivery Status</th>
+              </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination-container">
+          <nav>
+            <ul class="pagination justify-content-end" id="pagination"></ul>
+          </nav>
+        </div>
+
+        <!-- Profile and Recent Orders Section -->
+        <div id="profileSection" class="mt-4" style="display: none;">
+          <div class="card profile-card mb-3">
+            <div class="card-header bg-primary text-white">Customer Profile</div>
+            <div class="card-body">
+              <p><strong>Name:</strong> <span id="customerName"></span></p>
+              <p><strong>Address:</strong> <span id="customerAddress"></span></p>
+            </div>
+          </div>
+          <h4>Recent Orders of <span id="profileCustomerName"></span></h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Product</th>
+                <th>Amount ($)</th>
+                <th>Delivery Status</th>
+              </tr>
+            </thead>
+            <tbody id="recentOrders"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <!-- Customer Sales Chart -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header d-flex justify-content-center align-items-center flex-column">
+                <span class="fw-bold fs-3 text-center">Customer Sales Chart</span>
+                <select id="timeFilter" class="form-select w-auto mt-2" onchange="updateChart()">
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </select>
+              </div>
+              <div class="card-body">
+                <canvas id="customerChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Customers Card -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header text-center fw-bold fs-3">Top Customers</div>
+              <div class="card-body">
+                <ul class="list-group" id="topCustomers">
+                  <!-- Top Customers with Images -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </section>
+  <!-- NAVBAR -->
+  <script src="/Dashboard/js/customer.js"></script>
+  <script>
+ function toggleNav() {
+    document.getElementById("myNav").classList.toggle("active");
+  }
+
+
+
+  document.querySelectorAll('.overlay a').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  </script>
+</body>
+
+</html>

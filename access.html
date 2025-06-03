@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Management - Dairy Farm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/Dashboard/css/access.css">
+   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  
+  
+</head>
+
+<body>
+  <section id="content">
+
+    <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+    <!-- Overlay Menu -->
+    <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <a href="#"><i class='bx bx-box'></i> Inventory</a>
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+
+      <input type="checkbox" id="switch-mode" hidden>
+      <label for="switch-mode" class="switch-mode"></label>
+
+      <a href="javascript:void(0)" class="language-icon">
+        <i class='bx bx-globe'></i>
+      </a>
+      <div class="language-dropdown">
+        <ul>
+          <li><a href="#" data-lang="en"><img
+                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+              America</a></li>
+          <li><a href="#" data-lang="es"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+              Spanish</a></li>
+          <li><a href="#" data-lang="fr"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+              French</a></li>
+          <li><a href="#" data-lang="de"><img src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+              German</a></li>
+          <li><a href="#" data-lang="zh"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+              Chinese</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+      <a href="javascript:void(0)" class="notification-trigger">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+
+      <!-- Notification Dropdown -->
+      <div class="notification-dropdown">
+        <ul>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                alt="John Doe" class="customer-img"
+                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+              <div class="notification-text">
+                <p><strong>John Doe</strong> just registered.</p>
+                <span class="time">2 mins ago</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                alt="Jane Smith" class="customer-img"
+                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+              <div class="notification-text">
+                <p><strong>Jane Smith</strong> updated their profile.</p>
+                <span class="time">10 mins ago</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Profile Pop-up -->
+      <div id="profilePopup" class="profile-popup">
+        <div class="profile-content">
+          <span class="close-btn" onclick="closeProfile()">&times;</span>
+          <img id="profileImage" class="profile-img" src="" alt="Profile">
+          <h2 id="profileName"></h2>
+          <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        </div>
+      </div>
+
+
+
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">Loading...</span>
+          <i class="arrow-down">▼</i>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div id="profileDropdown" class="dropdown-menu">
+          <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+          <a href="#" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
+
+      <!-- Profile Edit Modal -->
+      <div id="profileModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeProfileModal()">&times;</span>
+          <h2>Edit Profile</h2>
+          <form id="profileForm">
+            <label for="newName">Username:</label>
+            <input type="text" id="newName" required>
+
+            <label for="newAvatar">Upload Avatar:</label>
+            <input type="file" id="newAvatar" accept="image/*">
+
+            <button type="button" onclick="saveProfile()">Save</button>
+          </form>
+        </div>
+      </div>
+
+
+    </nav>
+    <div class="main-content">
+
+         <div class="mt-5">
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Users</h5>
+                        <h2 class="text-primary">124</h2>
+                        <p class="text-muted">Active: 118</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Admins</h5>
+                        <h2 class="text-primary">8</h2>
+                        <p class="text-muted">Last added: 2 days ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Sales Team</h5>
+                        <h2 class="text-success">45</h2>
+                        <p class="text-muted">Active today: 32</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Support</h5>
+                        <h2 class="text-accent">22</h2>
+                        <p class="text-muted">On shift: 12</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Tabs -->
+        <ul class="nav nav-tabs mb-4" id="mainTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab">User Management</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="roles-tab" data-bs-toggle="tab" data-bs-target="#roles" type="button" role="tab">Role Permissions</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="logs-tab" data-bs-toggle="tab" data-bs-target="#logs" type="button" role="tab">Activity Logs</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="mainTabsContent">
+            <!-- Users Tab -->
+            <div class="tab-pane fade show active" id="users" role="tabpanel">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-users me-2"></i>User Management</span>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                            <i class="fas fa-plus me-1"></i>Add User
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Last Active</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>john@example.com</td>
+                                        <td><span class="badge badge-admin py-2">Admin</span></td>
+                                        <td><span class="badge bg-success py-2">Active</span></td>
+                                        <td>Today, 10:45 AM</td>
+                                        <td class="user-actions">
+                                            <button class="btn btn-sm btn-outline-primary view-user" data-user-id="1">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-warning edit-user" data-user-id="1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-user" data-user-id="1">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sarah Johnson</td>
+                                        <td>sarah@example.com</td>
+                                        <td><span class="badge badge-sales py-2">Sales</span></td>
+                                        <td><span class="badge bg-success py-2">Active</span></td>
+                                        <td>Today, 09:30 AM</td>
+                                        <td class="user-actions">
+                                            <button class="btn btn-sm btn-outline-primary view-user" data-user-id="2">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-warning edit-user" data-user-id="2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-user" data-user-id="2">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mike Brown</td>
+                                        <td>mike@example.com</td>
+                                        <td><span class="badge badge-delivery py-2">Delivery</span></td>
+                                        <td><span class="badge bg-warning text-dark py-2">Pending</span></td>
+                                        <td>Yesterday, 5:30 PM</td>
+                                        <td class="user-actions">
+                                            <button class="btn btn-sm btn-outline-primary view-user" data-user-id="3">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-warning edit-user" data-user-id="3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-user" data-user-id="3">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Emily Davis</td>
+                                        <td>emily@example.com</td>
+                                        <td><span class="badge badge-support py-2">Support</span></td>
+                                        <td><span class="badge bg-success py-2">Active</span></td>
+                                        <td>Yesterday, 3:45 PM</td>
+                                        <td class="user-actions">
+                                            <button class="btn btn-sm btn-outline-primary view-user" data-user-id="4">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-warning edit-user" data-user-id="4">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger delete-user" data-user-id="4">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div>
+                                <select class="form-select form-select-sm" style="width: auto; display: inline-block;">
+                                    <option>5</option>
+                                    <option selected>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                </select>
+                                <span class="ms-2">entries per page</span>
+                            </div>
+                            <div>
+                                <ul class="pagination pagination-sm">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Roles Tab -->
+            <div class="tab-pane fade" id="roles" role="tabpanel">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-user-tag me-2"></i>Role-Based Permissions
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Admin</h5>
+                                <div class="role-permission">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="admin-all" checked disabled>
+                                        <label class="form-check-label" for="admin-all">Full system access</label>
+                                    </div>
+                                    <small class="text-muted">Can manage all users, roles, and settings</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Sales</h5>
+                                <div class="role-permission">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="sales-view" checked>
+                                        <label class="form-check-label" for="sales-view">View customer data</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="sales-edit" checked>
+                                        <label class="form-check-label" for="sales-edit">Edit orders</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="sales-reports">
+                                        <label class="form-check-label" for="sales-reports">Generate reports</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h5>Delivery</h5>
+                                <div class="role-permission">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="delivery-view" checked>
+                                        <label class="form-check-label" for="delivery-view">View delivery routes</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="delivery-update" checked>
+                                        <label class="form-check-label" for="delivery-update">Update delivery status</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Customer Support</h5>
+                                <div class="role-permission">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="support-tickets" checked>
+                                        <label class="form-check-label" for="support-tickets">Manage tickets</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="support-refunds">
+                                        <label class="form-check-label" for="support-refunds">Process refunds</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="support-chat" checked>
+                                        <label class="form-check-label" for="support-chat">Live chat access</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button class="btn btn-primary">Save Permissions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logs Tab -->
+            <div class="tab-pane fade" id="logs" role="tabpanel">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-clipboard-list me-2"></i>Activity Logs</span>
+                        <div>
+                            <select class="form-select form-select-sm" id="logTimeFilter" style="width: auto; display: inline-block;">
+                                <option value="today">Today</option>
+                                <option value="week" selected>Last 7 days</option>
+                                <option value="month">Last 30 days</option>
+                                <option value="all">All time</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body activity-log" id="logContainer">
+                        <!-- Log entries will be dynamically inserted here -->
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <div id="logCountInfo">
+                            Showing 1 to 5 of 127 entries
+                        </div>
+                        <div>
+                            <ul class="pagination pagination-sm mb-0" id="logPagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New User</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUserForm">
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="userName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userRole" class="form-label">Role</label>
+                            <select class="form-select" id="userRole" required>
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="sales">Sales</option>
+                                <option value="delivery">Delivery</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userStatus" class="form-label">Status</label>
+                            <select class="form-select" id="userStatus" required>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveUser">Save User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View User Modal -->
+    <div class="modal fade" id="viewUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">User Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Name:</div>
+                        <div class="col-md-8" id="viewUserName">John Smith</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Email:</div>
+                        <div class="col-md-8" id="viewUserEmail">john@example.com</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Role:</div>
+                        <div class="col-md-8">
+                            <span class="badge badge-admin" id="viewUserRole">Admin</span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Status:</div>
+                        <div class="col-md-8">
+                            <span class="badge bg-success" id="viewUserStatus">Active</span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 fw-bold">Last Active:</div>
+                        <div class="col-md-8" id="viewUserLastActive">Today, 10:45 AM</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 fw-bold">Joined:</div>
+                        <div class="col-md-8" id="viewUserJoined">January 15, 2023</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit User</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editUserForm">
+                        <input type="hidden" id="editUserId">
+                        <div class="mb-3">
+                            <label for="editUserName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="editUserName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editUserEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editUserEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editUserRole" class="form-label">Role</label>
+                            <select class="form-select" id="editUserRole" required>
+                                <option value="admin">Admin</option>
+                                <option value="sales">Sales</option>
+                                <option value="delivery">Delivery</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editUserStatus" class="form-label">Status</label>
+                            <select class="form-select" id="editUserStatus" required>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="updateUser">Update User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this user? This action cannot be undone.</p>
+                    <p class="fw-bold" id="deleteUserName">John Smith (john@example.com)</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    </div>
+</section>
+
+<script src="/Dashboard/js/access.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function toggleNav() {
+    document.getElementById("myNav").classList.toggle("active");
+  }
+
+
+
+  document.querySelectorAll('.overlay a').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+ 
+window.onload = function() {
+	const adminName = localStorage.getItem("adminName");
+	if (adminName) {
+	  document.getElementById("adminNameDisplay").textContent = `${adminName}`;
+	} else {
+	  
+	  window.location.href = "../login.html";
+	}
+  };
+
+  
+// Load existing user data
+const userName = localStorage.getItem("username") || "Admin";
+const userAvatar = localStorage.getItem("avatar") || "https://static.vecteezy.com/system/resources/previews/027/951/137/non_2x/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png";
+
+// Display user info
+document.getElementById("adminNameDisplay").textContent = userName;
+document.getElementById("adminAvatar").src = userAvatar;
+
+</script>
+</body>
+
+</html>

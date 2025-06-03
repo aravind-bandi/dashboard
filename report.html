@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management - Dairy Farm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/Dashboard/css/report.css">
+    </head>
+
+<body>
+  <!-- NAVBAR -->
+  <section id="content">
+
+  <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+      <a href="javascript:void(0)" class="language-icon arer">
+        <i class='bx bx-globe'></i>
+        <!-- <span class="badge">5</span> -->
+      </a>
+      <a href="javascript:void(0)" class="notification-trigger arer">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+      <span class="divider"></span>
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar"
+            src="https://static.vecteezy.com/system/resources/thumbnails/024/183/502/small/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg"
+            alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">srikanth</span>
+          <i class="arrow-down">▼</i>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container-fluid mt-4">
+            <!-- Page Header -->
+            <marquee behavior="scroll" direction="left" class="text-white fs-3 p-2"   style="background: linear-gradient(135deg, #00A8CC, #007EA7);">
+                Dairy Farm Reports
+            </marquee>
+            <div class="row mb-3">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-primary">Download Report</button>
+                </div>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <label class="form-label">Select Date Range:</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Category:</label>
+                    <select class="form-control">
+                        <option>Milk Production</option>
+                        <option>Sales</option>
+                        <option>Expenses</option>
+                        <option>Profit</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button class="btn btn-success w-100" style="background: linear-gradient(135deg, #5919f1, #063be9);">Apply Filters</button>
+                </div>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card p-3 mb-3 text-center  shadow"  style="background: linear-gradient(135deg, #6D5BBA, #8D58BF);">
+                        <h5 class="text-white">Total Milk Production</h5>
+                        <h6 class="text-white">5,200 L</h6>
+                        <small class="text-white">This Month</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card p-3 mb-3 text-center bg-light shadow" style="background: linear-gradient(135deg, #FF6F61, #D92027);">
+                        <h5 class="text-white">Total Sales</h5>
+                        <h6 class="text-white">₹2,50,000</h6>
+                        <small class="text-white">This Month</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card p-3 mb-3 text-center bg-light shadow" style="background: linear-gradient(135deg, #00A8CC, #007EA7);">
+                        <h5 class="text-white">Expenses</h5>
+                        <h6 class="text-white">₹1,20,000</h6>
+                        <small class="text-white">Feed, Maintenance, Labor</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card p-3 mb-3 text-center bg-light shadow" style="background: linear-gradient(135deg, #FFC75F, #F4A261);">
+                        <h5 class="text-white">Net Profit</h5>
+                        <h6 class="text-white">₹1,30,000</h6>
+                        <small class="text-success">↑ 10% from last month</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card p-3 mb-4">
+                        <h5 class="text-center">Milk Production (Last 6 Months)</h5>
+                        <canvas id="milkChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card p-3 mb-4">
+                        <h5 class="text-center">Sales & Expenses Comparison</h5>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" mt-4">
+            <div class="row">
+                <!-- Cow Details Report -->
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white mb-3">
+                        <div class="card-header fs-3">Cow Details Report</div>
+                        <div class="card-body">
+                            <h5>Total Cows: 50</h5>
+                            <p>Healthy: 45 | Sick: 5</p>
+                            <p>Daily Feed Consumption: 1200kg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milk & Product Testing -->
+                <div class="col-md-4">
+                    <div class="card bg-success text-white mb-3">
+                        <div class="card-header fs-4">Milk & Product Testing</div>
+                        <div class="card-body">
+                            <h5>Milk Quality: Excellent</h5>
+                            <p>Fat Content: 4.2%</p>
+                            <p>Last Test Date: 24-Feb-2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Everyday Login & Logout Details -->
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white mb-3">
+                        <div class="card-header fs-4">Login & Logout Details</div>
+                        <div class="card-body">
+                            <h5>Today's Logins: 15</h5>
+                            <p>Admin: 2 | Staff: 10 | Farmers: 3</p>
+                            <p>Last Logout: 06:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Farmers & Staff Details -->
+            <h1 class="text-center mt-4  bg-primary text-white">Farmers</h1>
+
+            <div class="row mt-3">
+                <!-- Farmer 1 -->
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM="
+                                alt="Rajesh Kumar" class="profile-img mb-2 mx-auto d-block ">
+                            <h3 class="text-center">Rajesh Kumar</h3>
+                            <p class="text-left">Experience: 10 Years</p>
+                            <p>Specialization: Organic Dairy</p>
+                            <p>Location: Haryana</p>
+                            <p>Contact: +91 9876543210</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farmer 2 -->
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <img src="https://media.gettyimages.com/id/1644178284/photo/veterinarian-working-at-cow-farm.jpg?s=612x612&w=gi&k=20&c=vnaSavcPyA21DF06CH0iRvM8Bna3AIfeJxTxNvvfaDE="
+                                alt="Suresh Yadav" class="profile-img mb-2  mx-auto d-block">
+                            <h3 class="text-center">Suresh Yadav</h3>
+                            <p>Experience: 8 Years</p>
+                            <p>Specialization: Cow Breeding</p>
+                            <p>Location: Punjab</p>
+                            <p>Contact: +91 9876543222</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farmer 3 -->
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <img src="https://media.istockphoto.com/id/1072249904/photo/two-female-workers-discussing-while-standing-in-food-factory.jpg?s=612x612&w=0&k=20&c=xKHgAOZm1Rsbh3bl_GJt2NFsv6EcBfGjbDNi4spz7Pk="
+                                alt="Anjali Sharma" class="profile-img mb-2  mx-auto d-block">
+                            <h3 class="text-center">Anjali Sharma</h3>
+                            <p>Experience: 6 Years</p>
+                            <p>Specialization: Milk Processing</p>
+                            <p>Location: Rajasthan</p>
+                            <p>Contact: +91 9876543233</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-center mt-4  bg-primary text-white">Staff Members</h1>
+            <div class="row mt-3">
+                <!-- Staff 1 -->
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <img src="https://www.shutterstock.com/image-photo/smile-cow-agriculture-man-on-600nw-2259920633.jpg"
+                                alt="Rahul Verma" class="profile-img mb-2  mx-auto d-block">
+                            <h3 class="text-center">Rahul Verma</h3>
+                            <p>Role: Dairy Manager</p>
+                            <p>Experience: 7 Years</p>
+                            <p>Contact: +91 9876543244</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff 2 -->
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <img src="https://media.istockphoto.com/id/1354842602/photo/portrait-of-a-young-businesswoman-working-on-a-laptop-in-an-office.jpg?s=612x612&w=0&k=20&c=kfP1g2712RiaxsDriIxFo363ARlaL2D591s-22CnIo8="
+                                alt="Priya Singh" class="profile-img mb-2  mx-auto d-block">
+                            <h3 class="text-center">Priya Singh</h3>
+                            <p>Role: Veterinary Doctor</p>
+                            <p>Experience: 5 Years</p>
+                            <p>Contact: +91 9876543255</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff 3 -->
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-body">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8hdhnzlrR5rRNyuXV1AM6ln05wudIWGmblKYG1G9aecno5Jq9N3xNNEjBcBwO4xqmN6o&usqp=CAU"
+                                alt="Manoj Thakur" class="profile-img mb-2  mx-auto d-block">
+                            <h3 class="text-center">Manoj Thakur</h3>
+                            <p>Role: Machinery Operator</p>
+                            <p>Experience: 4 Years</p>
+                            <p>Contact: +91 9876543266</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </section>
+  <!-- NAVBAR -->
+  <script src="/Dashboard/js/report.js"></script>
+  <script>
+ function toggleNav() {
+    document.getElementById("myNav").classList.toggle("active");
+  }
+
+
+
+  document.querySelectorAll('.overlay a').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/Dashboard/css/revenue.css">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+  <section id="content">
+
+    <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+    <!-- Overlay Menu -->
+    <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+
+      <input type="checkbox" id="switch-mode" hidden>
+      <label for="switch-mode" class="switch-mode"></label>
+
+      <a href="javascript:void(0)" class="language-icon">
+        <i class='bx bx-globe'></i>
+      </a>
+      <div class="language-dropdown">
+        <ul>
+          <li><a href="#" data-lang="en"><img
+                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+              America</a></li>
+          <li><a href="#" data-lang="es"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+              Spanish</a></li>
+          <li><a href="#" data-lang="fr"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+              French</a></li>
+          <li><a href="#" data-lang="de"><img src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+              German</a></li>
+          <li><a href="#" data-lang="zh"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+              Chinese</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+      <a href="javascript:void(0)" class="notification-trigger">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+
+      <!-- Notification Dropdown -->
+      <div class="notification-dropdown">
+        <ul>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                alt="John Doe" class="customer-img"
+                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+              <div class="notification-text">
+                <p><strong>John Doe</strong> just registered.</p>
+                <span class="time">2 mins ago</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                alt="Jane Smith" class="customer-img"
+                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+              <div class="notification-text">
+                <p><strong>Jane Smith</strong> updated their profile.</p>
+                <span class="time">10 mins ago</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Profile Pop-up -->
+      <div id="profilePopup" class="profile-popup">
+        <div class="profile-content">
+          <span class="close-btn" onclick="closeProfile()">&times;</span>
+          <img id="profileImage" class="profile-img" src="" alt="Profile">
+          <h2 id="profileName"></h2>
+          <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        </div>
+      </div>
+
+
+
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">Loading...</span>
+          <i class="arrow-down">▼</i>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div id="profileDropdown" class="dropdown-menu">
+          <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+          <a href="#" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
+
+      <!-- Profile Edit Modal -->
+      <div id="profileModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeProfileModal()">&times;</span>
+          <h2>Edit Profile</h2>
+          <form id="profileForm">
+            <label for="newName">Username:</label>
+            <input type="text" id="newName" required>
+
+            <label for="newAvatar">Upload Avatar:</label>
+            <input type="file" id="newAvatar" accept="image/*">
+
+            <button type="button" onclick="saveProfile()">Save</button>
+          </form>
+        </div>
+      </div>
+
+
+    </nav>
+    <div class="main-content">
+      <h2 class="fw-bold text-center area"><i class='bx bx-dollar-circle'></i> Revenue</h2>
+      <ul class="box-info">
+        <li>
+          <i class='bx bxs-calendar-check'></i>
+          <span class="text">
+            <h3>110</h3>
+            <p>Cows</p>
+          </span>
+        </li>
+        <li>
+          <i class='bx bxs-group'></i>
+          <span class="text">
+            <h3>2834</h3>
+            <p>Customers</p>
+          </span>
+        </li>
+        <li>
+          <i class='bx bxs-dollar-circle'></i>
+          <span class="text">
+            <h3>$2543</h3>
+            <p>Daily revenue</p>
+          </span>
+        </li>
+      </ul>
+
+      <div class="charts">
+        <div class="chart-card">
+          <h2 class="chart-title">Revenue</h2>
+          <div id="bar-chart"></div>
+        </div>
+        <div class="chart-card">
+          <h2 class="chart-title">Sales and Orders</h2>
+          <div id="area-chart"></div>
+        </div>
+      </div>
+      <div class="table-container">
+        <h2 class="text-center">Revenue of Dairy Farm</h2>
+        <table class="revenue-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Amount Earned</th>
+              <th>Units Sold</th>
+              <th>Revenue Source</th>
+              <th>Sales Region</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>March 1, 2025</td>
+              <td>Milk</td>
+              <td>$500</td>
+              <td>1000 liters</td>
+              <td>Retail</td>
+              <td>North Region</td>
+            </tr>
+            <tr>
+              <td>March 2, 2025</td>
+              <td>Cheese</td>
+              <td>$300</td>
+              <td>150 kg</td>
+              <td>Wholesale</td>
+              <td>East Region</td>
+            </tr>
+            <tr>
+              <td>March 3, 2025</td>
+              <td>Milk</td>
+              <td>$450</td>
+              <td>900 liters</td>
+              <td>Retail</td>
+              <td>West Region</td>
+            </tr>
+            <tr>
+              <td>March 4, 2025</td>
+              <td>Butter</td>
+              <td>$200</td>
+              <td>50 kg</td>
+              <td>Wholesale</td>
+              <td>South Region</td>
+            </tr>
+            <tr>
+              <td>March 5, 2025</td>
+              <td>Milk</td>
+              <td>$600</td>
+              <td>1200 liters</td>
+              <td>Retail</td>
+              <td>Central Region</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="my-4 ">
+        <h2 class="text-center mb-4">Revenue of Dairy Farm</h2>
+
+        <!-- Form to add new revenue -->
+        <form id="revenue-form">
+          <div class="mb-3">
+            <label for="date" class="form-label">Date:</label>
+            <input type="date" id="date" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="product" class="form-label">Product:</label>
+            <input type="text" id="product" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount Earned:</label>
+            <input type="number" id="amount" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="units" class="form-label">Units Sold:</label>
+            <input type="text" id="units" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="revenue-source" class="form-label">Revenue Source:</label>
+            <input type="text" id="revenue-source" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="region" class="form-label">Sales Region:</label>
+            <input type="text" id="region" class="form-control" required>
+          </div>
+
+          <button type="submit" class="btn revenue-button w-100"
+            style="background-color: purple; color: white; border-color: purple;">Add Revenue</button>
+        </form>
+        </form>
+
+        <!-- Table for displaying the revenue data -->
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Amount Earned</th>
+              <th>Units Sold</th>
+              <th>Revenue Source</th>
+              <th>Sales Region</th>
+            </tr>
+          </thead>
+          <tbody id="revenue-tbody">
+            <!-- New rows will be added here -->
+          </tbody>
+        </table>
+
+        <!-- Total Revenue -->
+        <h3 class="text-center mt-3">Total Revenue: $<span id="total-revenue">0</span></h3>
+      </div>
+      <div class=" invoice">
+        <div class="invoice-header">
+          <div class="row">
+            <div class="col-xs-8">
+              <h1>Invoice <small>With Credit</small></h1>
+              <h4 class="text-muted">NO: 554775/R1 | Date: 01/01/2015</h4>
+            </div>
+            <div class="col-xs-4">
+              <div class="media">
+                <div class="media-left">
+                  <img class="media-object logo" src="https://dummyimage.com/70x70/000/fff&text=ACME" />
+                </div>
+                <ul class="media-body list-unstyled">
+                  <li><strong>CRM Dairy Farm</strong></li>
+                  <li> milk products</li>
+                  <li>Field 3, Moon</li>
+                  <li>info@acme.com</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="invoice-body">
+          <div class="row">
+            <div class="col-xs-5">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Company Details</h3>
+                </div>
+                <div class="panel-body">
+                  <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd><strong>CRM Dairyfarm</strong></dd>
+                    <dt>Industry</dt>
+                    <dd>Milk Products</dd>
+                    <dt>Address</dt>
+                    <dd>Field 3, Moon</dd>
+                    <dt>Phone</dt>
+                    <dd>123.4456.4567</dd>
+                    <dt>Email</dt>
+                    <dd>mainl@acme.com</dd>
+                    <dt>Tax NO</dt>
+                    <dd class="mono">123456789</dd>
+                    <dt>Tax Office</dt>
+                    <dd>A' Moon</dd>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Customer Details</h3>
+                </div>
+                <div class="panel-body">
+                  <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd>milk products</dd>
+                    <dt>Industry</dt>
+                    <dd>dairyfarm</dd>
+                    <dt>Address</dt>
+                    <dd>One Way Redmond, WA 98052-7329, USA</dd>
+                    <dt>Phone</dt>
+                    <dd>(425) 882-8080</dd>
+                    <dt>Email</dt>
+                    <dd>contact@microsoft.com</dd>
+                    <dt>Tax NO</dt>
+                    <dd class="mono">123456789</dd>
+                    <dt>&nbsp;</dt>
+                    <dd>&nbsp;</dd>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Services / Products</h3>
+            </div>
+            <table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>Item / Details</th>
+                  <th class="text-center colfix">Unit Cost</th>
+                  <th class="text-center colfix">Sum Cost</th>
+                  <th class="text-center colfix">Discount</th>
+                  <th class="text-center colfix">Tax</th>
+                  <th class="text-center colfix">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Lorem Ipsum Dolor
+                    <br>
+                    <small class="text-muted">The best lorem in town, try it now or leave forever</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">$1,000.00</span>
+                    <br>
+                    <small class="text-muted">Before Tax</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">$18,000.00</span>
+                    <br>
+                    <small class="text-muted">18 Units</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">- $1,800.00</span>
+                    <br>
+                    <small class="text-muted">Special -10%</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">+ $3,240.00</span>
+                    <br>
+                    <small class="text-muted">VAT 20%</small>
+                  </td>
+                  <td class="text-right">
+                    <strong class="mono">$19,440.00</strong>
+                    <br>
+                    <small class="text-muted mono">$16,200.00</small>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    Sit Amet Dolo
+                    <br>
+                    <small class="text-muted">Now you may sit</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">$120.00</span>
+                    <br>
+                    <small class="text-muted">Before Tax</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">$240.00</span>
+                    <br>
+                    <small class="text-muted">2 Units</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">- $0.00</span>
+                    <br>
+                    <small class="text-muted">-</small>
+                  </td>
+                  <td class="text-right">
+                    <span class="mono">+ $72.00</span>
+                    <br>
+                    <small class="text-muted">VAT:20% S:10%</small>
+                  </td>
+                  <td class="text-right">
+                    <strong class="mono">$312.00</strong>
+                    <br>
+                    <small class="text-muted mono">$240.00</small>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel panel-default">
+            <table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <td class="text-center col-xs-1">Sub Total</td>
+                  <td class="text-center col-xs-1">Discount</td>
+                  <td class="text-center col-xs-1">Total</td>
+                  <td class="text-center col-xs-1">Tax</td>
+                  <td class="text-center col-xs-1">Final</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="text-center rowtotal mono">$18,240.00</th>
+                  <th class="text-center rowtotal mono">-$1,800.00</th>
+                  <th class="text-center rowtotal mono">$16,440.00</th>
+                  <th class="text-center rowtotal mono">$3,312.00</th>
+                  <th class="text-center rowtotal mono">$19,752.00</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <i>Comments / Notes</i>
+                  <hr style="margin:3px 0 5px" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                  repudiandae numquam sit facere blanditiis, quasi distinctio ipsam? Libero odit ex expedita, facere
+                  sunt, possimus consectetur dolore, nobis iure amet vero.
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-5">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Payment Method</h3>
+                </div>
+                <div class="panel-body">
+                  <p>For your convenience, you may deposite the final ammount at one of our banks</p>
+                  <ul class="list-unstyled">
+                    <li>Alpha Bank - <span class="mono">MO123456789456123</span></li>
+                    <li>Beta Bank - <span class="mono">MO123456789456123</span></li>
+                    <li>Gamma Bank - <span class="mono">MO123456789456123</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="invoice-footer">
+          Thank you for choosing our services.
+          <br /> We hope to see you again soon
+          <br />
+          <strong>~ACME~</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/4.3.0/apexcharts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+  <script src="/Dashboard/js/revenue.js"></script>
+
+  <script>
+    function toggleNav() {
+      document.getElementById("myNav").classList.toggle("active");
+    }
+
+
+
+    document.querySelectorAll('.overlay a').forEach(item => {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
