@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+  <section id="content">
+
+    <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+    <!-- Overlay Menu -->
+    <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+
+      <input type="checkbox" id="switch-mode" hidden>
+      <label for="switch-mode" class="switch-mode"></label>
+
+      <a href="javascript:void(0)" class="language-icon">
+        <i class='bx bx-globe'></i>
+      </a>
+      <div class="language-dropdown">
+        <ul>
+          <li><a href="#" data-lang="en"><img
+                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+              America</a></li>
+          <li><a href="#" data-lang="es"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+              Spanish</a></li>
+          <li><a href="#" data-lang="fr"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+              French</a></li>
+          <li><a href="#" data-lang="de"><img src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+              German</a></li>
+          <li><a href="#" data-lang="zh"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+              Chinese</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+      <a href="javascript:void(0)" class="notification-trigger">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+
+      <!-- Notification Dropdown -->
+      <div class="notification-dropdown">
+        <ul>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                alt="John Doe" class="customer-img"
+                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+              <div class="notification-text">
+                <p><strong>John Doe</strong> just registered.</p>
+                <span class="time">2 mins ago</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                alt="Jane Smith" class="customer-img"
+                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+              <div class="notification-text">
+                <p><strong>Jane Smith</strong> updated their profile.</p>
+                <span class="time">10 mins ago</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Profile Pop-up -->
+      <div id="profilePopup" class="profile-popup">
+        <div class="profile-content">
+          <span class="close-btn" onclick="closeProfile()">&times;</span>
+          <img id="profileImage" class="profile-img" src="" alt="Profile">
+          <h2 id="profileName"></h2>
+          <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        </div>
+      </div>
+
+
+
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">Loading...</span>
+          <i class="arrow-down">▼</i>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div id="profileDropdown" class="dropdown-menu">
+          <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+          <a href="#" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
+
+      <!-- Profile Edit Modal -->
+      <div id="profileModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeProfileModal()">&times;</span>
+          <h2>Edit Profile</h2>
+          <form id="profileForm">
+            <label for="newName">Username:</label>
+            <input type="text" id="newName" required>
+
+            <label for="newAvatar">Upload Avatar:</label>
+            <input type="file" id="newAvatar" accept="image/*">
+
+            <button type="button" onclick="saveProfile()">Save</button>
+          </form>
+        </div>
+      </div>
+
+
+    </nav>
+    <div class="main-content">
+
+        <div class=" arer">
+          <div class="row">
+            <!-- Order Card -->
+            <div class="col-md-4 mb-4">
+              <div class="card shadow-sm text-white" style="background: linear-gradient(135deg, #6D5BBA, #8D58BF);">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <h3 class="card-title">Orders</h3>
+                    <h5 class="card-text">350</h5>
+                    <p>Total orders received</p>
+                  </div>
+                  <i class="bx bxs-cart fs-1"></i> <!-- Order Icon -->
+                </div>
+              </div>
+            </div>
+          
+            <!-- Sales Card -->
+            <div class="col-md-4 mb-4">
+              <div class="card shadow-sm text-white" style="background: linear-gradient(135deg, #FF6F61, #D92027);">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <h3 class="card-title">Sales</h3>
+                    <h5 class="card-text">$12,500</h5>
+                    <p>Total sales value</p>
+                  </div>
+                  <i class="bx bx-dollar fs-1"></i> <!-- Sales Icon -->
+                </div>
+              </div>
+            </div>
+          
+            <!-- Revenue Card -->
+            <div class="col-md-4 mb-4">
+              <div class="card shadow-sm text-white" style="background: linear-gradient(135deg, #00A8CC, #007EA7);">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                  <div>
+                    <h3 class="card-title">Profit</h3>
+                    <h5 class="card-text">$8,000</h5>
+                    <p>Total revenue generated</p>
+                  </div>
+                  <i class="bx bx-line-chart fs-1"></i> <!-- Revenue Icon -->
+                </div>
+              </div>
+            </div>
+          </div>
+      
+      
+      
+          </div>
+          <div class="">
+      
+            <div class="contain">
+      
+              <div class="chart1">
+                <h2 class="mb">yearly sale</h2>
+                <canvas id="barchart1" width="500" height="300"></canvas>
+      
+              </div>
+              <div class="chart1">
+                <h2 class="">Products sale</h2>
+                <canvas id="doughnut" width="350" height="300"></canvas>
+      
+              </div>
+            </div>
+          </div>
+          <div class=" mt-4">
+            <div class="cardd-container">
+      
+              <!-- Loader Card (Profit) -->
+              <div class="cardd" id="profit-card">
+                <h4 id="profit-title">Loading...</h4>
+                <div class="loader" id="loader"></div>
+                <div class="profit-display" id="profit-display">
+                  <h3 id="profit-amount"></h3>
+                  <p id="profit-period"></p>
+                </div>
+              </div>
+      
+              <!-- Dairy Farm Product Categories -->
+              <div class="cardd">
+                <h4 class="text-center">Dairy Farm Products</h4>
+                <div class="categories">
+                  <div class="category">
+                    <img
+                      src="https://cdn.theatlantic.com/thumbor/GCqfW0ynNbC6W-zNYako3g_vVlo=/451x36:1531x1116/1080x1080/media/img/mt/2024/10/Atlantic_Milk_2000x1125/original.jpg"
+                      alt="Milk">
+                    <span>Milk</span>
+                  </div>
+                  <div class="category">
+                    <img src="https://static.toiimg.com/thumb/82065684.cms?resizemode=4&width=1200" alt="Cheese">
+                    <span>Cheese</span>
+                  </div>
+                  <div class="category">
+                    <img
+                      src="https://www.bhg.com/thmb/-luCrhu9Eh1C2u-oZXseX5tKAbk=/3000x0/filters:no_upscale():strip_icc()/bhg-how-many-grams-are-in-one-stick-of-butter-03-2c71be43bb20474384f7483c3827f8e7.jpg"
+                      alt="Butter">
+                    <span>Butter</span>
+                  </div>
+                  <div class="category">
+                    <img
+                      src="https://static01.nyt.com/images/2018/07/18/dining/18YOGURT1/18YOGURT1-videoSixteenByNineJumbo1600.jpg"
+                      alt="Yogurt">
+                    <span>Yogurt</span>
+                  </div>
+                  <div class="category">
+                    <img
+                      src="https://www.allrecipes.com/thmb/_ynTUbGciS9uRG3WzvdToQdSOXg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/50050-five-minute-ice-cream-DDMFS-2x1-077-c9d38152e1c1490284371890762ce600.jpg"
+                      alt="Cream">
+                    <span>Ice Cream</span>
+                  </div>
+                </div>
+              </div>
+      
+      
+              <!-- Customer Support Chat Box -->
+              <div class="cardd">
+                <!-- Top Products Sales -->
+                <h4 class="text-center">Top Sales</h4>
+                <div class="top-sales">
+                  <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdLYLrpcL-2TKZDY0eljDthboDPMytCCRgVg&s"
+                      alt="Product 1">
+                    <div>
+                      <p class="top"><strong>Milk 1L</strong></p>
+                      <p>Sales: 120 units</p>
+                    </div>
+                  </div>
+                  <div class="product">
+                    <img
+                      src="https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt02cf680667522d24/66707e8470fb6fb1b0d72705/types-of-cheese-hero.jpg?q=70&width=3840&auto=webp"
+                      alt="Product 2">
+                    <div>
+                      <p><strong>Cheese Block</strong></p>
+                      <p>Sales: 90 units</p>
+                    </div>
+                  </div>
+                  <div class="product">
+                    <img
+                      src="https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt02cf680667522d24/66707e8470fb6fb1b0d72705/types-of-cheese-hero.jpg?q=70&width=3840&auto=webp"
+                      alt="Product 2">
+                    <div>
+                      <p><strong>Cheese Block</strong></p>
+                      <p>Sales: 90 units</p>
+                    </div>
+                  </div>
+                  <div class="product">
+                    <img src="https://static01.nyt.com/images/2018/07/18/dining/18YOGURT1/18YOGURT1-superJumbo.jpg"
+                      alt="Product 3">
+                    <div>
+                      <p><strong>Yogurt Pack</strong></p>
+                      <p>Sales: 75 units</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+          <div class="">
+            <div class="tabl">
+              <div class="tabl-header">
+                <p>customer details</p>
+                <div>
+                  <input placeholder="customer" />
+                  <button class="add-new">+ add new</button>
+                </div>
+              </div>
+              <div class="tabl-section">
+                <table>
+                  <thead>
+                    <tr>
+      
+                      <th>customer</th>
+      
+                      <th>email</th>
+                      <th>status</th>
+                      <th>action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+      
+                      <td> <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg" />
+                        <span>Aravind</span>
+                      </td>
+      
+                      <td>Aravind@gmail.com</td>
+                      <td>pending</td>
+                      <td>
+                        <button><i class='bx bxs-edit'></i></button>
+                        <button><i class='bx bx-trash'></i></button>
+                      </td>
+                    </tr>
+                    <tr>
+      
+                      <td> <img
+                          src="https://static.vecteezy.com/system/resources/thumbnails/049/174/246/small_2x/a-smiling-young-indian-man-with-formal-shirts-outdoors-photo.jpg" />
+                        <span>Shiva
+      
+                        </span>
+                      </td>
+      
+                      <td>Shiva@gmail.com</td>
+                      <td>delivery</td>
+                      <td>
+                        <button><i class='bx bxs-edit'></i></button>
+                        <button><i class='bx bx-trash'></i></button>
+                      </td>
+                    </tr>
+                    <tr>
+      
+                      <td> <img
+                          src="https://static.vecteezy.com/system/resources/thumbnails/049/174/246/small_2x/a-smiling-young-indian-man-with-formal-shirts-outdoors-photo.jpg" />
+                        <span>Pranay</span>
+                      </td>
+      
+                      <td>pranay@gmail.com</td>
+                      <td>cancel</td>
+                      <td>
+                        <button><i class='bx bxs-edit'></i></button>
+                        <button><i class='bx bx-trash'></i></button>
+                      </td>
+                    </tr>
+                    <tr>
+      
+                      <td> <img
+                          src="https://t3.ftcdn.net/jpg/04/63/22/18/360_F_463221862_vfyvz35Q5FwuJENuS3tLrc7pCGigMe37.jpg" />
+                        <span>Abdul</span>
+                      </td>
+      
+                      <td>abdul@gmail.com</td>
+                      <td>progress</td>
+                      <td>
+                        <button><i class='bx bxs-edit'></i></button>
+                        <button><i class='bx bx-trash'></i></button>
+                      </td>
+                    </tr>
+                    <tr>
+      
+                      <td> <img
+                          src="https://www.shutterstock.com/image-photo/young-bearded-indian-man-streets-260nw-1190229109.jpg" />
+                        <span>Kiran</span>
+                      </td>
+      
+                      <td>kiran@gmail.com</td>
+                      <td>pending</td>
+                      <td>
+                        <button><i class='bx bxs-edit'></i></button>
+                        <button><i class='bx bx-trash'></i></button>
+                      </td>
+                    </tr>
+      
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/Dashboard/js/dashboard.js"></script>
+<script src="/Dashboard/js/loader.js"></script>
+<script src="/Dashboard/js/chart1.js"></script>
+<script src="/Dashboard/js/chart2.js"></script>
+<script>
+  function toggleNav() {
+    document.getElementById("myNav").classList.toggle("active");
+  }
+
+
+
+  document.querySelectorAll('.overlay a').forEach(item => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

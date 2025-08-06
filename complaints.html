@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helpdesk - Admin Dashboard</title>
+
+  <!-- Bootstrap 5 CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Boxicons for Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Chart.js for Graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/Dashboard/css/complaints.css">
+</head>
+
+<body>
+
+  <section id="content">
+
+    <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+    <!-- Overlay Menu -->
+    <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="brand">
+        <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+      </a>
+      <!-- Toggle Button (beside logo) -->
+      <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+
+      </form>
+
+      <input type="checkbox" id="switch-mode" hidden>
+      <label for="switch-mode" class="switch-mode"></label>
+
+      <a href="javascript:void(0)" class="language-icon">
+        <i class='bx bx-globe'></i>
+      </a>
+      <div class="language-dropdown">
+        <ul>
+          <li><a href="#" data-lang="en"><img
+                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+              America</a></li>
+          <li><a href="#" data-lang="es"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+              Spanish</a></li>
+          <li><a href="#" data-lang="fr"><img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+              French</a></li>
+          <li><a href="#" data-lang="de"><img src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+              German</a></li>
+          <li><a href="#" data-lang="zh"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+              Chinese</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+      <a href="javascript:void(0)" class="notification-trigger">
+        <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+      </a>
+
+      <!-- Notification Dropdown -->
+      <div class="notification-dropdown">
+        <ul>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                alt="John Doe" class="customer-img"
+                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+              <div class="notification-text">
+                <p><strong>John Doe</strong> just registered.</p>
+                <span class="time">2 mins ago</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="notification-item">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                alt="Jane Smith" class="customer-img"
+                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+              <div class="notification-text">
+                <p><strong>Jane Smith</strong> updated their profile.</p>
+                <span class="time">10 mins ago</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Profile Pop-up -->
+      <div id="profilePopup" class="profile-popup">
+        <div class="profile-content">
+          <span class="close-btn" onclick="closeProfile()">&times;</span>
+          <img id="profileImage" class="profile-img" src="" alt="Profile">
+          <h2 id="profileName"></h2>
+          <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        </div>
+      </div>
+
+
+
+      <div class="header-right">
+        <div class="admin-profile" onclick="toggleDropdown()">
+          <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar">
+          <span id="adminNameDisplay">Loading...</span>
+          <i class="arrow-down">▼</i>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div id="profileDropdown" class="dropdown-menu">
+          <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+          <a href="#" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
+
+      <!-- Profile Edit Modal -->
+      <div id="profileModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeProfileModal()">&times;</span>
+          <h2>Edit Profile</h2>
+          <form id="profileForm">
+            <label for="newName">Username:</label>
+            <input type="text" id="newName" required>
+
+            <label for="newAvatar">Upload Avatar:</label>
+            <input type="file" id="newAvatar" accept="image/*">
+
+            <button type="button" onclick="saveProfile()">Save</button>
+          </form>
+        </div>
+      </div>
+
+
+    </nav>
+    <div class="main-content">
+
+ <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Main Content -->
+            <main class="col-md-12 py-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0 text-center"><i class="fas fa-comment-alt me-2"></i>Feedback & Complaint Management</h2>
+                    <div>
+                        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#exportModal">
+                            <i class="fas fa-file-export me-1"></i> Export
+                        </button>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Metrics -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card metric-card bg-primary text-white">
+                            <div class="card-body">
+                                <i class="fas fa-smile icon-bg"></i>
+                                <h5 class="card-title"><i class="fas fa-chart-line me-2"></i>CSAT Score</h5>
+                                <h2 class="card-text">84% <span class="badge bg-white text-primary">+2% <i class="fas fa-arrow-up"></i></span></h2>
+                                <p class="card-text"><small>Last 30 days</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card metric-card bg-success text-white">
+                            <div class="card-body">
+                                <i class="fas fa-star icon-bg"></i>
+                                <h5 class="card-title"><i class="fas fa-bullseye me-2"></i>NPS</h5>
+                                <h2 class="card-text">62 <span class="badge bg-white text-success">+5 <i class="fas fa-arrow-up"></i></span></h2>
+                                <p class="card-text"><small>Last 30 days</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card metric-card bg-warning text-white">
+                            <div class="card-body">
+                                <i class="fas fa-exclamation-circle icon-bg"></i>
+                                <h5 class="card-title"><i class="fas fa-tasks me-2"></i>Open Complaints</h5>
+                                <h2 class="card-text">14 <span class="badge bg-white text-warning">+3 <i class="fas fa-arrow-up"></i></span></h2>
+                                <p class="card-text"><small>Active cases</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card metric-card bg-info text-white">
+                            <div class="card-body">
+                                <i class="fas fa-clock icon-bg"></i>
+                                <h5 class="card-title"><i class="fas fa-stopwatch me-2"></i>Avg Resolution</h5>
+                                <h2 class="card-text">2.1d <span class="badge bg-white text-info">-0.5d <i class="fas fa-arrow-down"></i></span></h2>
+                                <p class="card-text"><small>Time to resolve</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tabs Navigation -->
+                <ul class="nav nav-pills mb-4" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="feedback-tab" data-bs-toggle="pill" data-bs-target="#feedback" type="button" role="tab">
+                            <i class="fas fa-comment-dots me-1"></i> Customer Feedback
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="complaints-tab" data-bs-toggle="pill" data-bs-target="#complaints" type="button" role="tab">
+                            <i class="fas fa-exclamation-triangle me-1"></i> Complaint Management
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="analytics-tab" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab">
+                            <i class="fas fa-chart-bar me-1"></i> Analytics
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="team-tab" data-bs-toggle="pill" data-bs-target="#team" type="button" role="tab">
+                            <i class="fas fa-users me-1"></i> Team Performance
+                        </button>
+                    </li>
+                </ul>
+                
+                <!-- Tabs Content -->
+                <div class="tab-content" id="myTabContent">
+                    <!-- Feedback Tab -->
+                    <div class="tab-pane fade show active" id="feedback" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-list me-2"></i>Recent Feedback</span>
+                                        <div class="d-flex">
+                                            <div class="search-box me-2">
+                                                <!-- <i class="fas fa-search"></i> -->
+                                                <input type="text" class="form-control" placeholder="Search feedback...">
+                                            </div>
+                                            <div class="filter-dropdown dropdown">
+                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="feedbackFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-filter"></i> Filter
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="feedbackFilterDropdown">
+                                                    <li><a class="dropdown-item" href="#">All Feedback</a></li>
+                                                    <li><a class="dropdown-item" href="#">Positive</a></li>
+                                                    <li><a class="dropdown-item" href="#">Negative</a></li>
+                                                    <li><a class="dropdown-item" href="#">Neutral</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#">By Category</a></li>
+                                                    <li><a class="dropdown-item" href="#">By Date</a></li>
+                                                </ul>
+                                            </div>
+                                            <button class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#newFeedbackModal">
+                                                <i class="fas fa-plus me-1"></i> Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Customer <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Feedback</th>
+                                                        <th>Sentiment <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Category <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-15</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>John Smith</td>
+                                                        <td>Very happy with the quick response to my issue</td>
+                                                        <td><span class="sentiment-positive"><i class="fas fa-smile me-1"></i> Positive</span></td>
+                                                        <td><span class="badge bg-primary"><i class="fas fa-headset me-1"></i> Service</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Share"><i class="fas fa-share"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-14</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Sarah Johnson</td>
+                                                        <td>The product didn't meet my expectations</td>
+                                                        <td><span class="sentiment-negative"><i class="fas fa-frown me-1"></i> Negative</span></td>
+                                                        <td><span class="badge bg-info"><i class="fas fa-box me-1"></i> Product</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Share"><i class="fas fa-share"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-13</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Michael Brown</td>
+                                                        <td>Average experience, could be better</td>
+                                                        <td><span class="sentiment-neutral"><i class="fas fa-meh me-1"></i> Neutral</span></td>
+                                                        <td><span class="badge bg-warning"><i class="fas fa-question-circle me-1"></i> Support</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Share"><i class="fas fa-share"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-12</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Emily Davis</td>
+                                                        <td>Excellent customer service, very helpful!</td>
+                                                        <td><span class="sentiment-positive"><i class="fas fa-smile me-1"></i> Positive</span></td>
+                                                        <td><span class="badge bg-primary"><i class="fas fa-headset me-1"></i> Service</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Share"><i class="fas fa-share"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-11</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Robert Wilson</td>
+                                                        <td>Billing issues that haven't been resolved</td>
+                                                        <td><span class="sentiment-negative"><i class="fas fa-frown me-1"></i> Negative</span></td>
+                                                        <td><span class="badge bg-danger"><i class="fas fa-file-invoice-dollar me-1"></i> Billing</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Share"><i class="fas fa-share"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div aria-label="Feedback pagination">
+                                            <ul class="pagination justify-content-center mt-3">
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-angle-left"></i></a>
+                                                </li>
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-pie me-2"></i>Feedback Sentiment
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="sentimentChart" height="200"></canvas>
+                                        <div class="mt-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-smile text-success me-2"></i>Positive</span>
+                                                <span>65%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 65%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1 mt-2">
+                                                <span><i class="fas fa-meh text-warning me-2"></i>Neutral</span>
+                                                <span>20%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1 mt-2">
+                                                <span><i class="fas fa-frown text-danger me-2"></i>Negative</span>
+                                                <span>15%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-tags me-2"></i>Feedback Categories
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-headset text-primary me-2"></i>Service</span>
+                                                <span>42%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 42%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-box text-info me-2"></i>Product</span>
+                                                <span>28%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: 28%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-question-circle text-warning me-2"></i>Support</span>
+                                                <span>15%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 15%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-file-invoice-dollar text-danger me-2"></i>Billing</span>
+                                                <span>10%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-truck text-secondary me-2"></i>Shipping</span>
+                                                <span>5%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 5%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Complaints Tab -->
+                    <div class="tab-pane fade" id="complaints" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-list me-2"></i>Complaint Cases</span>
+                                        <div class="d-flex">
+                                            <div class="search-box me-2">
+                                                <!-- <i class="fas fa-search"></i> -->
+                                                <input type="text" class="form-control" placeholder="Search complaints...">
+                                            </div>
+                                            <div class="filter-dropdown dropdown me-2">
+                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="complaintFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fas fa-filter"></i> Filter
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="complaintFilterDropdown">
+                                                    <li><a class="dropdown-item" href="#">All Complaints</a></li>
+                                                    <li><a class="dropdown-item" href="#">Open</a></li>
+                                                    <li><a class="dropdown-item" href="#">Resolved</a></li>
+                                                    <li><a class="dropdown-item" href="#">Escalated</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#">By Priority</a></li>
+                                                    <li><a class="dropdown-item" href="#">By Category</a></li>
+                                                </ul>
+                                            </div>
+                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newComplaintModal">
+                                                <i class="fas fa-plus me-1"></i> New
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Case ID <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Opened <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Customer <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Issue</th>
+                                                        <th>Status <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Priority <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="fas fa-hashtag me-2 text-muted"></i>#COMP-1245</td>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-14</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Emma Wilson</td>
+                                                        <td>Product defect - screen flickering</td>
+                                                        <td><span class="status-badge status-in-progress"><i class="fas fa-spinner me-1"></i> In Progress</span></td>
+                                                        <td><span class="status-badge priority-high"><i class="fas fa-exclamation-circle me-1"></i> High</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Resolve"><i class="fas fa-check"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-info" title="Assign"><i class="fas fa-user-plus"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-hashtag me-2 text-muted"></i>#COMP-1244</td>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-13</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>David Lee</td>
+                                                        <td>Billing error - double charge</td>
+                                                        <td><span class="status-badge status-resolved"><i class="fas fa-check-circle me-1"></i> Resolved</span></td>
+                                                        <td><span class="status-badge priority-medium"><i class="fas fa-info-circle me-1"></i> Medium</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Resolve"><i class="fas fa-check"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-info" title="Assign"><i class="fas fa-user-plus"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-hashtag me-2 text-muted"></i>#COMP-1243</td>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-12</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Lisa Chen</td>
+                                                        <td>Shipping delay - 5 days overdue</td>
+                                                        <td><span class="status-badge status-pending"><i class="fas fa-clock me-1"></i> Pending</span></td>
+                                                        <td><span class="status-badge priority-low"><i class="fas fa-arrow-down me-1"></i> Low</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Resolve"><i class="fas fa-check"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-info" title="Assign"><i class="fas fa-user-plus"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-hashtag me-2 text-muted"></i>#COMP-1242</td>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-10</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>James Rodriguez</td>
+                                                        <td>Wrong item received</td>
+                                                        <td><span class="status-badge status-resolved"><i class="fas fa-check-circle me-1"></i> Resolved</span></td>
+                                                        <td><span class="status-badge priority-high"><i class="fas fa-exclamation-circle me-1"></i> High</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Resolve"><i class="fas fa-check"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-info" title="Assign"><i class="fas fa-user-plus"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-hashtag me-2 text-muted"></i>#COMP-1241</td>
+                                                        <td><i class="far fa-calendar-alt me-2 text-muted"></i>2023-06-08</td>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Sophia Martinez</td>
+                                                        <td>Account access issues</td>
+                                                        <td><span class="status-badge status-escalated"><i class="fas fa-exclamation-triangle me-1"></i> Escalated</span></td>
+                                                        <td><span class="status-badge priority-high"><i class="fas fa-exclamation-circle me-1"></i> High</span></td>
+                                                        <td>
+                                                            <button class="btn btn-sm action-btn btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-success" title="Resolve"><i class="fas fa-check"></i></button>
+                                                            <button class="btn btn-sm action-btn btn-outline-info" title="Assign"><i class="fas fa-user-plus"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div aria-label="Complaint pagination">
+                                            <ul class="pagination justify-content-center mt-3">
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-angle-left"></i></a>
+                                                </li>
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-pie me-2"></i>Complaint Status
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="complaintStatusChart" height="200"></canvas>
+                                        <div class="mt-3">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="status-badge status-resolved me-2"><i class="fas fa-check-circle"></i></span>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Resolved</span>
+                                                        <span>42%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 42%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="status-badge status-in-progress me-2"><i class="fas fa-spinner"></i></span>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>In Progress</span>
+                                                        <span>28%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 28%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="status-badge status-pending me-2"><i class="fas fa-clock"></i></span>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Pending</span>
+                                                        <span>20%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center">
+                                                <span class="status-badge status-escalated me-2"><i class="fas fa-exclamation-triangle"></i></span>
+                                                                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Escalated</span>
+                                                        <span>10%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-fire me-2"></i>Priority Distribution
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="priorityChart" height="200"></canvas>
+                                        <div class="mt-3">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="status-badge priority-high me-2"><i class="fas fa-exclamation-circle"></i></span>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>High</span>
+                                                        <span>35%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 35%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="status-badge priority-medium me-2"><i class="fas fa-info-circle"></i></span>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Medium</span>
+                                                        <span>45%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 45%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center">
+                                                <span class="status-badge priority-low me-2"><i class="fas fa-arrow-down"></i></span>
+                                                <div class="flex-grow-1">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span>Low</span>
+                                                        <span>20%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 20%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Analytics Tab -->
+                    <div class="tab-pane fade" id="analytics" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-line me-2"></i>Feedback Trends
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="feedbackTrendChart" height="300"></canvas>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-2"></i>Complaint Resolution Time
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="resolutionTimeChart" height="300"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-tags me-2"></i>Top Complaint Categories
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="complaintCategoryChart" height="250"></canvas>
+                                        <ul class="list-group mt-3">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-box text-info me-2"></i>Product Issues</span>
+                                                <span class="badge bg-info rounded-pill">42%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-file-invoice-dollar text-danger me-2"></i>Billing Problems</span>
+                                                <span class="badge bg-danger rounded-pill">28%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-truck text-secondary me-2"></i>Shipping Delays</span>
+                                                <span class="badge bg-secondary rounded-pill">15%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-headset text-primary me-2"></i>Service Quality</span>
+                                                <span class="badge bg-primary rounded-pill">10%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-lock text-warning me-2"></i>Account Access</span>
+                                                <span class="badge bg-warning rounded-pill">5%</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-calendar-alt me-2"></i>Recent Activity
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="timeline">
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-marker">
+                                                    <div class="timeline-item-marker-indicator bg-success"></div>
+                                                </div>
+                                                <div class="timeline-item-content">
+                                                    <span class="fw-bold">Case #COMP-1244 resolved</span>
+                                                    <span class="text-muted small">Just now</span>
+                                                    <p>Billing error was corrected and refund issued</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-marker">
+                                                    <div class="timeline-item-marker-indicator bg-primary"></div>
+                                                </div>
+                                                <div class="timeline-item-content">
+                                                    <span class="fw-bold">New feedback received</span>
+                                                    <span class="text-muted small">15 minutes ago</span>
+                                                    <p>Customer praised support team responsiveness</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-marker">
+                                                    <div class="timeline-item-marker-indicator bg-warning"></div>
+                                                </div>
+                                                <div class="timeline-item-content">
+                                                    <span class="fw-bold">Case #COMP-1245 assigned</span>
+                                                    <span class="text-muted small">1 hour ago</span>
+                                                    <p>Product defect assigned to technical support</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-marker">
+                                                    <div class="timeline-item-marker-indicator bg-danger"></div>
+                                                </div>
+                                                <div class="timeline-item-content">
+                                                    <span class="fw-bold">Case #COMP-1241 escalated</span>
+                                                    <span class="text-muted small">3 hours ago</span>
+                                                    <p>Account access issue escalated to senior team</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-item-marker">
+                                                    <div class="timeline-item-marker-indicator bg-info"></div>
+                                                </div>
+                                                <div class="timeline-item-content">
+                                                    <span class="fw-bold">Weekly report generated</span>
+                                                    <span class="text-muted small">Yesterday</span>
+                                                    <p>Customer satisfaction improved by 5% this week</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Performance Tab -->
+                    <div class="tab-pane fade" id="team" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-users me-2"></i>Agent Performance
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Agent <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Cases Handled <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Resolution Rate <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Avg. Resolution Time <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>CSAT Score <i class="fas fa-sort ms-1"></i></th>
+                                                        <th>Performance</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Sarah Johnson</td>
+                                                        <td>42</td>
+                                                        <td>92%</td>
+                                                        <td>1.2d</td>
+                                                        <td>4.8/5</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 6px;">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 95%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Michael Chen</td>
+                                                        <td>38</td>
+                                                        <td>87%</td>
+                                                        <td>1.5d</td>
+                                                        <td>4.6/5</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 6px;">
+                                                                <div class="progress-bar bg-success" role="progressbar" style="width: 88%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Emily Wilson</td>
+                                                        <td>35</td>
+                                                        <td>85%</td>
+                                                        <td>1.8d</td>
+                                                        <td>4.5/5</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 6px;">
+                                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 82%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>David Brown</td>
+                                                        <td>29</td>
+                                                        <td>79%</td>
+                                                        <td>2.3d</td>
+                                                        <td>4.2/5</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 6px;">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-user me-2 text-muted"></i>Lisa Rodriguez</td>
+                                                        <td>25</td>
+                                                        <td>76%</td>
+                                                        <td>2.7d</td>
+                                                        <td>4.0/5</td>
+                                                        <td>
+                                                            <div class="progress" style="height: 6px;">
+                                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 70%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-trophy me-2"></i>Top Performers
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row text-center">
+                                            <div class="col-md-4 mb-4">
+                                                <div class="card metric-card bg-success text-white">
+                                                    <div class="card-body">
+                                                        <i class="fas fa-medal icon-bg"></i>
+                                                        <h5 class="card-title">Highest CSAT</h5>
+                                                        <h3 class="card-text">4.9/5</h3>
+                                                        <p class="card-text">Sarah Johnson</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <div class="card metric-card bg-primary text-white">
+                                                    <div class="card-body">
+                                                        <i class="fas fa-bolt icon-bg"></i>
+                                                        <h5 class="card-title">Fastest Resolver</h5>
+                                                        <h3 class="card-text">0.9d</h3>
+                                                        <p class="card-text">Michael Chen</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <div class="card metric-card bg-info text-white">
+                                                    <div class="card-body">
+                                                        <i class="fas fa-star icon-bg"></i>
+                                                        <h5 class="card-title">Most Cases</h5>
+                                                        <h3 class="card-text">42</h3>
+                                                        <p class="card-text">Sarah Johnson</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-pie me-2"></i>Team Performance
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="teamPerformanceChart" height="250"></canvas>
+                                        <div class="mt-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span><i class="fas fa-circle text-success me-2"></i>Excellent</span>
+                                                <span>35%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 35%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1 mt-2">
+                                                <span><i class="fas fa-circle text-primary me-2"></i>Good</span>
+                                                <span>40%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 40%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1 mt-2">
+                                                <span><i class="fas fa-circle text-warning me-2"></i>Average</span>
+                                                <span>20%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 20%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1 mt-2">
+                                                <span><i class="fas fa-circle text-danger me-2"></i>Needs Improvement</span>
+                                                <span>5%</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <i class="fas fa-award me-2"></i>Recognition
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="avatar avatar-lg me-3 bg-success bg-opacity-10 text-success">
+                                                <i class="fas fa-medal fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Employee of the Month</h6>
+                                                <p class="text-muted mb-0 small">Sarah Johnson</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="avatar avatar-lg me-3 bg-primary bg-opacity-10 text-primary">
+                                                <i class="fas fa-bolt fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Fastest Resolver</h6>
+                                                <p class="text-muted mb-0 small">Michael Chen</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="avatar avatar-lg me-3 bg-info bg-opacity-10 text-info">
+                                                <i class="fas fa-star fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Customer Favorite</h6>
+                                                <p class="text-muted mb-0 small">Emily Wilson</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-lg me-3 bg-warning bg-opacity-10 text-warning">
+                                                <i class="fas fa-arrow-up fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Most Improved</h6>
+                                                <p class="text-muted mb-0 small">David Brown</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- New Feedback Modal -->
+    <div class="modal fade" id="newFeedbackModal" tabindex="-1" aria-labelledby="newFeedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newFeedbackModalLabel"><i class="fas fa-plus-circle me-2"></i>Add New Feedback</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="customerName" class="form-label">Customer Name</label>
+                                <input type="text" class="form-control" id="customerName" placeholder="Enter customer name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="feedbackDate" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="feedbackDate">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="feedbackCategory" class="form-label">Category</label>
+                                <select class="form-select" id="feedbackCategory">
+                                    <option selected>Select category</option>
+                                    <option value="service">Service</option>
+                                    <option value="product">Product</option>
+                                    <option value="support">Support</option>
+                                    <option value="billing">Billing</option>
+                                    <option value="shipping">Shipping</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="feedbackSentiment" class="form-label">Sentiment</label>
+                                <select class="form-select" id="feedbackSentiment">
+                                    <option selected>Select sentiment</option>
+                                    <option value="positive">Positive</option>
+                                    <option value="neutral">Neutral</option>
+                                    <option value="negative">Negative</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feedbackText" class="form-label">Feedback</label>
+                            <textarea class="form-control" id="feedbackText" rows="3" placeholder="Enter customer feedback"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feedbackSource" class="form-label">Source</label>
+                            <select class="form-select" id="feedbackSource">
+                                <option selected>Select source</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                                <option value="web">Web Form</option>
+                                <option value="social">Social Media</option>
+                                <option value="survey">Survey</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Feedback</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Complaint Modal -->
+    <div class="modal fade" id="newComplaintModal" tabindex="-1" aria-labelledby="newComplaintModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newComplaintModalLabel"><i class="fas fa-exclamation-triangle me-2"></i>Create New Complaint</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="complaintCustomer" class="form-label">Customer</label>
+                                <select class="form-select" id="complaintCustomer">
+                                    <option selected>Select customer</option>
+                                    <option value="1">John Smith</option>
+                                    <option value="2">Sarah Johnson</option>
+                                    <option value="3">Michael Brown</option>
+                                    <option value="4">Emily Davis</option>
+                                    <option value="5">Robert Wilson</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="complaintDate" class="form-label">Date Reported</label>
+                                <input type="date" class="form-control" id="complaintDate">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="complaintCategory" class="form-label">Category</label>
+                                <select class="form-select" id="complaintCategory">
+                                    <option selected>Select category</option>
+                                    <option value="product">Product Issue</option>
+                                    <option value="billing">Billing Problem</option>
+                                    <option value="shipping">Shipping Delay</option>
+                                    <option value="service">Service Quality</option>
+                                    <option value="account">Account Access</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="complaintPriority" class="form-label">Priority</label>
+                                <select class="form-select" id="complaintPriority">
+                                    <option selected>Select priority</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="complaintDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="complaintDescription" rows="3" placeholder="Describe the complaint in detail"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="complaintAssignee" class="form-label">Assign To</label>
+                            <select class="form-select" id="complaintAssignee">
+                                <option selected>Select team member</option>
+                                <option value="1">Sarah Johnson</option>
+                                <option value="2">Michael Chen</option>
+                                <option value="3">Emily Wilson</option>
+                                <option value="4">David Brown</option>
+                                <option value="5">Lisa Rodriguez</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Create Complaint</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exportModalLabel"><i class="fas fa-file-export me-2"></i>Export Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exportType" class="form-label">Export Type</label>
+                            <select class="form-select" id="exportType">
+                                <option selected>Select export type</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="complaints">Complaints</option>
+                                <option value="analytics">Analytics</option>
+                                <option value="team">Team Performance</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exportFormat" class="form-label">Format</label>
+                            <select class="form-select" id="exportFormat">
+                                <option selected>Select format</option>
+                                <option value="csv">CSV</option>
+                                <option value="excel">Excel</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateRange" class="form-label">Date Range</label>
+                            <select class="form-select" id="dateRange">
+                                <option selected>Select date range</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="quarter">This Quarter</option>
+                                <option value="year">This Year</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Export Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsModalLabel"><i class="fas fa-cog me-2"></i>Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs mb-3" id="settingsTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab">General</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button" role="tab">Notifications</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="integrations-tab" data-bs-toggle="tab" data-bs-target="#integrations" type="button" role="tab">Integrations</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="settingsTabsContent">
+                        <div class="tab-pane fade show active" id="general" role="tabpanel">
+                            <div class="mb-3">
+                                <label for="timezone" class="form-label">Timezone</label>
+                                <select class="form-select" id="timezone">
+                                    <option selected>(UTC-05:00) Eastern Time</option>
+                                    <option value="1">(UTC-08:00) Pacific Time</option>
+                                    <option value="2">(UTC-07:00) Mountain Time</option>
+                                    <option value="3">(UTC-06:00) Central Time</option>
+                                    <option value="4">(UTC+00:00) GMT</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dateFormat" class="form-label">Date Format</label>
+                                <select class="form-select" id="dateFormat">
+                                    <option selected>MM/DD/YYYY</option>
+                                    <option value="1">DD/MM/YYYY</option>
+                                    <option value="2">YYYY-MM-DD</option>
+                                    <option value="3">Month D, YYYY</option>
+                                </select>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="darkMode" checked>
+                                <label class="form-check-label" for="darkMode">Dark Mode</label>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="notifications" role="tabpanel">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                <label class="form-check-label" for="emailNotifications">Email Notifications</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="pushNotifications" checked>
+                                <label class="form-check-label" for="pushNotifications">Push Notifications</label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Notification Types</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newFeedback" checked>
+                                    <label class="form-check-label" for="newFeedback">New Feedback</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newComplaint" checked>
+                                    <label class="form-check-label" for="newComplaint">New Complaint</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="complaintUpdate" checked>
+                                    <label class="form-check-label" for="complaintUpdate">Complaint Updates</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="escalation" checked>
+                                    <label class="form-check-label" for="escalation">Escalations</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="integrations" role="tabpanel">
+                            <div class="mb-3">
+                                <label class="form-label">CRM Integration</label>
+                                <select class="form-select mb-2">
+                                    <option selected>Select CRM</option>
+                                    <option>Salesforce</option>
+                                    <option>HubSpot</option>
+                                    <option>Zoho</option>
+                                    <option>Pipedrive</option>
+                                </select>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="API Key">
+                                    <button class="btn btn-outline-secondary" type="button">Connect</button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Support Tools</label>
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" type="checkbox" id="zendesk" checked>
+                                    <label class="form-check-label" for="zendesk">Zendesk</label>
+                                </div>
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" type="checkbox" id="freshdesk">
+                                    <label class="form-check-label" for="freshdesk">Freshdesk</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="intercom">
+                                    <label class="form-check-label" for="intercom">Intercom</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+
+
+    </div>
+  </section>
+
+
+
+  <!-- Chart.js Graphs -->
+  <script src="/Dashboard/js/complaints.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

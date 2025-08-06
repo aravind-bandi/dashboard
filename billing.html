@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Dashboard/css/billing.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <section id="content">
+
+        <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+        <!-- Overlay Menu -->
+        <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="brand">
+                <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+            </a>
+            <!-- Toggle Button (beside logo) -->
+            <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search..." id="email">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+
+            </form>
+
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+
+            <a href="javascript:void(0)" class="language-icon">
+                <i class='bx bx-globe'></i>
+            </a>
+            <div class="language-dropdown">
+                <ul>
+                    <li><a href="#" data-lang="en"><img
+                                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+                            America</a></li>
+                    <li><a href="#" data-lang="es"><img
+                                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+                            Spanish</a></li>
+                    <li><a href="#" data-lang="fr"><img
+                                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+                            French</a></li>
+                    <li><a href="#" data-lang="de"><img
+                                src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+                            German</a></li>
+                    <li><a href="#" data-lang="zh"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+                            Chinese</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+            <a href="javascript:void(0)" class="notification-trigger">
+                <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+            </a>
+
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown">
+                <ul>
+                    <li>
+                        <div class="notification-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                                alt="John Doe" class="customer-img"
+                                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+                            <div class="notification-text">
+                                <p><strong>John Doe</strong> just registered.</p>
+                                <span class="time">2 mins ago</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="notification-item">
+                            <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                                alt="Jane Smith" class="customer-img"
+                                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+                            <div class="notification-text">
+                                <p><strong>Jane Smith</strong> updated their profile.</p>
+                                <span class="time">10 mins ago</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Profile Pop-up -->
+            <div id="profilePopup" class="profile-popup">
+                <div class="profile-content">
+                    <span class="close-btn" onclick="closeProfile()">&times;</span>
+                    <img id="profileImage" class="profile-img" src="" alt="Profile">
+                    <h2 id="profileName"></h2>
+                    <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                </div>
+            </div>
+
+
+
+            <div class="header-right">
+                <div class="admin-profile" onclick="toggleDropdown()">
+                    <!-- <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar"> -->
+                    <span id="adminNameDisplay">Loading...</span>
+                    <i class="arrow-down">▼</i>
+                </div>
+
+                <!-- Dropdown Menu -->
+                <div id="profileDropdown" class="dropdown-menu">
+                    <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+                    <a href="#" onclick="logout()">🚪 Logout</a>
+                </div>
+            </div>
+
+            <!-- Profile Edit Modal -->
+            <div id="profileModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeProfileModal()">&times;</span>
+                    <h2>Edit Profile</h2>
+                    <form id="profileForm">
+                        <label for="newName">Username:</label>
+                        <input type="text" id="newName" required>
+
+                        <label for="newAvatar">Upload Avatar:</label>
+                        <input type="file" id="newAvatar" accept="image/*">
+
+                        <button type="button" onclick="saveProfile()">Save</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </nav>
+
+
+        <div class="main-content">
+            <div class="container-fluid py-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="fw-bold text-center bg-success c-white rounded py-4 "><i class="fas fa-file-invoice-dollar me-2"></i> Billing & Payment Processing</h2>
+                <div aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Billing</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs mb-4" id="billingTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="invoices-tab" data-bs-toggle="tab" data-bs-target="#invoices" type="button" role="tab">Invoices</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="payments-tab" data-bs-toggle="tab" data-bs-target="#payments" type="button" role="tab">Payments</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="receivables-tab" data-bs-toggle="tab" data-bs-target="#receivables" type="button" role="tab">Accounts Receivable</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="new-invoice-tab" data-bs-toggle="tab" data-bs-target="#new-invoice" type="button" role="tab">Create Invoice</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="billingTabsContent">
+                    <!-- Invoices Tab -->
+                    <div class="tab-pane fade show active" id="invoices" role="tabpanel" aria-labelledby="invoices-tab">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-file-invoice me-2"></i> Invoice Management</span>
+                                <div class="search-box">
+                                    <!-- <i class="fas fa-search"></i> -->
+                                    <input type="text" class="form-control form-control-sm" placeholder="Search invoices..." id="invoiceSearch" style="width: 250px;">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="invoicesTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Invoice #</th>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Due Date</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Sample data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div aria-label="Invoice pagination">
+                                    <ul class="pagination justify-content-end mt-3">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payments Tab -->
+                    <div class="tab-pane fade" id="payments" role="tabpanel" aria-labelledby="payments-tab">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-credit-card me-2"></i> Payment Management</span>
+                                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#recordPaymentModal">
+                                    <i class="fas fa-plus me-1"></i> Record Payment
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="paymentsTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Payment #</th>
+                                                <th>Invoice #</th>
+                                                <th>Customer</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Method</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Sample data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div aria-label="Payment pagination">
+                                    <ul class="pagination justify-content-end mt-3">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accounts Receivable Tab -->
+                    <div class="tab-pane fade" id="receivables" role="tabpanel" aria-labelledby="receivables-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-receipt me-2"></i> Accounts Receivable
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-md-4">
+                                        <div class="card bg-primary text-white">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Total Outstanding</h5>
+                                                <h2 class="card-text">$12,450.00</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card bg-warning text-dark">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Overdue Invoices</h5>
+                                                <h2 class="card-text">$3,250.00</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card bg-success text-white">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Paid This Month</h5>
+                                                <h2 class="card-text">$8,750.00</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="receivablesTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer</th>
+                                                <th>Total Outstanding</th>
+                                                <th>Current</th>
+                                                <th>1-30 Days</th>
+                                                <th>31-60 Days</th>
+                                                <th>>60 Days</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Sample data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <button class="btn btn-primary" id="sendRemindersBtn">
+                                        <i class="fas fa-envelope me-1"></i> Send Payment Reminders
+                                    </button>
+                                    <div aria-label="Receivables pagination">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">Next</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Create Invoice Tab -->
+                    <div class="tab-pane fade" id="new-invoice" role="tabpanel" aria-labelledby="new-invoice-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-file-alt me-2"></i> Create New Invoice
+                            </div>
+                            <div class="card-body">
+                                <form id="invoiceForm">
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="customerSelect" class="form-label">Customer</label>
+                                                <select class="form-select" id="customerSelect" required>
+                                                    <option value="" selected disabled>Select Customer</option>
+                                                    <option value="1">Acme Corporation</option>
+                                                    <option value="2">Globex Inc.</option>
+                                                    <option value="3">Soylent Corp</option>
+                                                    <option value="4">Initech</option>
+                                                    <option value="5">Umbrella Corporation</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="invoiceDate" class="form-label">Invoice Date</label>
+                                                <input type="date" class="form-control" id="invoiceDate" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="dueDate" class="form-label">Due Date</label>
+                                                <input type="date" class="form-control" id="dueDate" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="invoiceNumber" class="form-label">Invoice Number</label>
+                                                <input type="text" class="form-control" id="invoiceNumber" value="INV-2023-001" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h5 class="mb-3">Items</h5>
+                                    <div class="table-responsive mb-3">
+                                        <table class="table" id="itemsTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Item</th>
+                                                    <th>Description</th>
+                                                    <th>Quantity</th>
+                                                    <th>Price</th>
+                                                    <th>Tax</th>
+                                                    <th>Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <select class="form-select item-select">
+                                                            <option value="" selected disabled>Select Item</option>
+                                                            <option value="1">Product A</option>
+                                                            <option value="2">Product B</option>
+                                                            <option value="3">Product C</option>
+                                                            <option value="4">Service X</option>
+                                                            <option value="5">Service Y</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" class="form-control description" placeholder="Description"></td>
+                                                    <td><input type="number" class="form-control quantity" value="1" min="1"></td>
+                                                    <td><input type="number" class="form-control price" placeholder="0.00" step="0.01"></td>
+                                                    <td>
+                                                        <select class="form-select tax">
+                                                            <option value="0">No Tax</option>
+                                                            <option value="10" selected>GST 10%</option>
+                                                            <option value="18">VAT 18%</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="item-total">$0.00</td>
+                                                    <td><button type="button" class="btn btn-sm btn-danger remove-item"><i class="fas fa-trash"></i></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-primary mb-4" id="addItemBtn">
+                                        <i class="fas fa-plus me-1"></i> Add Item
+                                    </button>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="notes" class="form-label">Notes</label>
+                                                <textarea class="form-control" id="notes" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="total-section">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Subtotal:</span>
+                                                    <span id="subtotal">$0.00</span>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Tax:</span>
+                                                    <span id="taxAmount">$0.00</span>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Discount:</span>
+                                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                                        <input type="number" class="form-control" id="discountPercent" placeholder="%" min="0" max="100" value="0">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <span>Discount Amount:</span>
+                                                    <span id="discountAmount">$0.00</span>
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex justify-content-between fw-bold fs-5">
+                                                    <span>Total:</span>
+                                                    <span id="totalAmount">$0.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button type="button" class="btn btn-light me-2" id="previewInvoiceBtn">
+                                            <i class="fas fa-eye me-1"></i> Preview
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save me-1"></i> Save Invoice
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Invoice Preview Modal -->
+    <div class="modal fade" id="invoicePreviewModal" tabindex="-1" aria-labelledby="invoicePreviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="invoicePreviewModalLabel">Invoice Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="invoice-preview">
+                        <div class="invoice-header">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2>INVOICE</h2>
+                                    <p class="mb-1"><strong>Invoice #:</strong> <span id="previewInvoiceNumber">INV-2023-001</span></p>
+                                    <p class="mb-1"><strong>Date:</strong> <span id="previewInvoiceDate">May 15, 2023</span></p>
+                                    <p class="mb-1"><strong>Due Date:</strong> <span id="previewDueDate">June 14, 2023</span></p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <h4 id="previewCompanyName">Your Company Name</h4>
+                                    <p class="mb-1">123 Business Street</p>
+                                    <p class="mb-1">City, State 10001</p>
+                                    <p class="mb-1">Phone: (123) 456-7890</p>
+                                    <p class="mb-1">Email: billing@yourcompany.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>Bill To:</h5>
+                                <p class="mb-1"><strong id="previewCustomerName">Acme Corporation</strong></p>
+                                <p class="mb-1" id="previewCustomerAddress">123 Client Ave, Suite 100</p>
+                                <p class="mb-1" id="previewCustomerCity">New York, NY 10001</p>
+                                <p class="mb-1" id="previewCustomerEmail">contact@acme.com</p>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <h5>Amount Due:</h5>
+                                <h2 id="previewAmountDue">$1,250.00</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive mb-4">
+                            <table class="table invoice-table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Tax</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="previewItemsTable">
+                                    <!-- Items will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <h5>Notes</h5>
+                                    <p id="previewNotes">Thank you for your business. Payment is due within 30 days.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="total-section">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Subtotal:</span>
+                                        <span id="previewSubtotal">$1,000.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Tax:</span>
+                                        <span id="previewTax">$100.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Discount:</span>
+                                        <span id="previewDiscount">$0.00</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between fw-bold fs-5">
+                                        <span>Total:</span>
+                                        <span id="previewTotal">$1,100.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-print me-1"></i> Print Invoice
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <i class="fas fa-paper-plane me-1"></i> Send to Customer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Record Payment Modal -->
+    <div class="modal fade" id="recordPaymentModal" tabindex="-1" aria-labelledby="recordPaymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="recordPaymentModalLabel">Record Payment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="mb-3">
+                            <label for="paymentInvoiceSelect" class="form-label">Invoice</label>
+                            <select class="form-select" id="paymentInvoiceSelect" required>
+                                <option value="" selected disabled>Select Invoice</option>
+                                <option value="1">INV-2023-001 - Acme Corporation ($1,100.00)</option>
+                                <option value="2">INV-2023-002 - Globex Inc. ($2,500.00)</option>
+                                <option value="3">INV-2023-003 - Soylent Corp ($750.00)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentAmount" class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="paymentAmount" placeholder="0.00" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentDate" class="form-label">Payment Date</label>
+                            <input type="date" class="form-control" id="paymentDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentMethod" class="form-label">Payment Method</label>
+                            <select class="form-select" id="paymentMethod" required>
+                                <option value="" selected disabled>Select Method</option>
+                                <option value="cash">Cash</option>
+                                <option value="credit_card">Credit Card</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                                <option value="check">Check</option>
+                                <option value="online">Online Payment</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentReference" class="form-label">Reference/Transaction ID</label>
+                            <input type="text" class="form-control" id="paymentReference" placeholder="Optional">
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="paymentNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="savePaymentBtn">Record Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- View Invoice Modal -->
+    <div class="modal fade" id="viewInvoiceModal" tabindex="-1" aria-labelledby="viewInvoiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewInvoiceModalLabel">Invoice Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="invoice-preview">
+                        <div class="invoice-header">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2>INVOICE</h2>
+                                    <p class="mb-1"><strong>Invoice #:</strong> <span id="viewInvoiceNumber">INV-2023-001</span></p>
+                                    <p class="mb-1"><strong>Date:</strong> <span id="viewInvoiceDate">May 15, 2023</span></p>
+                                    <p class="mb-1"><strong>Due Date:</strong> <span id="viewDueDate">June 14, 2023</span></p>
+                                    <p class="mb-1"><strong>Status:</strong> <span class="status-pending" id="viewInvoiceStatus">Pending</span></p>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <h4>Your Company Name</h4>
+                                    <p class="mb-1">123 Business Street</p>
+                                    <p class="mb-1">City, State 10001</p>
+                                    <p class="mb-1">Phone: (123) 456-7890</p>
+                                    <p class="mb-1">Email: billing@yourcompany.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>Bill To:</h5>
+                                <p class="mb-1"><strong id="viewCustomerName">Acme Corporation</strong></p>
+                                <p class="mb-1" id="viewCustomerAddress">123 Client Ave, Suite 100</p>
+                                <p class="mb-1" id="viewCustomerCity">New York, NY 10001</p>
+                                <p class="mb-1" id="viewCustomerEmail">contact@acme.com</p>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <h5>Amount Due:</h5>
+                                <h2 id="viewAmountDue">$1,250.00</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive mb-4">
+                            <table class="table invoice-table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Tax</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="viewItemsTable">
+                                    <!-- Items will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <h5>Notes</h5>
+                                    <p id="viewNotes">Thank you for your business. Payment is due within 30 days.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h5>Payment History</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Amount</th>
+                                                    <th>Method</th>
+                                                    <th>Reference</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="paymentHistoryTable">
+                                                <!-- Payment history will be populated by JavaScript -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="total-section">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Subtotal:</span>
+                                        <span id="viewSubtotal">$1,000.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Tax:</span>
+                                        <span id="viewTax">$100.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Discount:</span>
+                                        <span id="viewDiscount">$0.00</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between fw-bold fs-5">
+                                        <span>Total:</span>
+                                        <span id="viewTotal">$1,100.00</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between fw-bold fs-5">
+                                        <span>Amount Paid:</span>
+                                        <span id="viewAmountPaid">$0.00</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between fw-bold fs-5">
+                                        <span>Balance Due:</span>
+                                        <span id="viewBalanceDue">$1,100.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recordPaymentModal" data-bs-dismiss="modal">
+                        <i class="fas fa-money-bill-wave me-1"></i> Record Payment
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <i class="fas fa-paper-plane me-1"></i> Send Reminder
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <i class="fas fa-file-pdf me-1"></i> Export as PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Dashboard/js/billing.js"></script>
+    <script>
+        function toggleNav() {
+            document.getElementById("myNav").classList.toggle("active");
+        }
+
+
+
+        document.querySelectorAll('.overlay a').forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/Dashboard/css/analytics.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>dashboard</title>
+  
+  </head>
+
+<body>
+    <section id="content">
+
+        <!-- <button id="menuToggle" onclick="toggleNav()">☰</button> -->
+
+        <!-- Overlay Menu -->
+         <div id="myNav" class="overlay">
+        <div class="overlay-content">
+            <a href="dashboard.html"><i class='bx bx-home'></i> Home</a>
+            <a href="order.html"><i class='bx bx-cart'></i> Order</a>
+            <a href="productt.html"><i class='bx bx-package'></i> Product</a>
+            <a href="customers.html"><i class='bx bx-user'></i> Customer</a>
+            <a href="report.html"><i class='bx bx-line-chart'></i> Reports</a>
+            <a href="analytics.html"><i class='bx bx-bar-chart'></i> Analytics</a>
+            <!-- <a href="#"><i class='bx bx-box'></i> Inventory</a> -->
+            <a href="stock.html"><i class='bx bx-store-alt'></i> Stock</a>
+            <a href="revenue.html"><i class='bx bx-dollar-circle'></i> Revenue</a>
+            <a href="user.html"><i class="bx bx-user"></i> User</a>
+            <a href="help.html"><i class='bx bx-help-circle'></i> Help</a>
+            <a href="settings.html"><i class='bx bx-cog'></i> Settings</a>
+            <a href="logout.html"><i class='bx bx-log-out'></i> Logout</a>
+        </div>
+    </div>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="brand">
+                <img src="/Dashboard/assests/ATS Wallpaper (1) (1).png" alt="Logo" class="logo">
+            </a>
+            <!-- Toggle Button (beside logo) -->
+            <button id="menuToggle" onclick="toggleNav()">☰</button>
+
+
+
+
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+
+            </form>
+
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+
+            <a href="javascript:void(0)" class="language-icon">
+                <i class='bx bx-globe'></i>
+            </a>
+            <div class="language-dropdown">
+                <ul>
+                    <li><a href="#" data-lang="en"><img
+                                src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg">
+                            America</a></li>
+                    <li><a href="#" data-lang="es"><img
+                                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/800px-Flag_of_Spain.svg.png">
+                            Spanish</a></li>
+                    <li><a href="#" data-lang="fr"><img
+                                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/800px-Flag_of_France.svg.png">
+                            French</a></li>
+                    <li><a href="#" data-lang="de"><img
+                                src="https://cdn.britannica.com/97/897-050-0BFECDA5/Flag-Germany.jpg">
+                            German</a></li>
+                    <li><a href="#" data-lang="zh"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png">
+                            Chinese</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Notification Dropdown Trigger (you can use a button or icon to toggle this) -->
+            <a href="javascript:void(0)" class="notification-trigger">
+                <i class='bx bxs-bell'></i> <!-- Bell Icon -->
+            </a>
+
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown">
+                <ul>
+                    <li>
+                        <div class="notification-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg"
+                                alt="John Doe" class="customer-img"
+                                onclick="showProfile('John Doe', '123-456-7890', 'john.doe@example.com', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg')">
+                            <div class="notification-text">
+                                <p><strong>John Doe</strong> just registered.</p>
+                                <span class="time">2 mins ago</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="notification-item">
+                            <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg"
+                                alt="Jane Smith" class="customer-img"
+                                onclick="showProfile('Jane Smith', '987-654-3210', 'jane.smith@example.com', 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg')">
+                            <div class="notification-text">
+                                <p><strong>Jane Smith</strong> updated their profile.</p>
+                                <span class="time">10 mins ago</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Profile Pop-up -->
+            <div id="profilePopup" class="profile-popup">
+                <div class="profile-content">
+                    <span class="close-btn" onclick="closeProfile()">&times;</span>
+                    <img id="profileImage" class="profile-img" src="" alt="Profile">
+                    <h2 id="profileName"></h2>
+                    <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                </div>
+            </div>
+
+
+
+            <div class="header-right">
+                <div class="admin-profile" onclick="toggleDropdown()">
+                    <img id="adminAvatar" src="default-avatar.png" alt="User Avatar" class="avatar">
+                    <span id="adminNameDisplay">Loading...</span>
+                    <i class="arrow-down">▼</i>
+                </div>
+
+                <!-- Dropdown Menu -->
+                <div id="profileDropdown" class="dropdown-menu">
+                    <a href="#" onclick="openProfileModal()">⚙️ Settings</a>
+                    <a href="#" onclick="logout()">🚪 Logout</a>
+                </div>
+            </div>
+
+            <!-- Profile Edit Modal -->
+            <div id="profileModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeProfileModal()">&times;</span>
+                    <h2>Edit Profile</h2>
+                    <form id="profileForm">
+                        <label for="newName">Username:</label>
+                        <input type="text" id="newName" required>
+
+                        <label for="newAvatar">Upload Avatar:</label>
+                        <input type="file" id="newAvatar" accept="image/*">
+
+                        <button type="button" onclick="saveProfile()">Save</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </nav>
+        <div class="main-content mt-3">
+            <div class="">
+
+                <div class=" mt-4">
+                    <h2 class="fw-bold text-center area">📊 Dairy Farm Analytics</h2>
+
+                    <!-- KPI CARDS -->
+                 <div class="row mt-4 text-center">
+    <div class="col-md-3">
+        <div class="cardd" style="background: linear-gradient(135deg, #6D5BBA, #8D58BF);">
+            <div class="cardd-content">
+                <div class="cardd-text">
+                    <div class="cardd-title">Total Milk</div>
+                    <div class="cardd-number">4,500 L</div>
+                </div>
+                <div class="cardd-icon">
+                    <i class="fas fa-wine-bottle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="cardd" style="background: linear-gradient(135deg, #FF6F61, #D92027);">
+            <div class="cardd-content">
+                <div class="cardd-text">
+                    <div class="cardd-title">Total Sales</div>
+                    <div class="cardd-number">$12,000</div>
+                </div>
+                <div class="cardd-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="cardd" style="background: linear-gradient(135deg, #00A8CC, #007EA7);">
+            <div class="cardd-content">
+                <div class="cardd-text">
+                    <div class="cardd-title">Total Cows</div>
+                    <div class="cardd-number">120</div>
+                </div>
+                <div class="cardd-icon">
+                    <i class="fas fa-cow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="cardd" style="background: linear-gradient(135deg, #FFC75F, #F4A261);">
+            <div class="cardd-content">
+                <div class="cardd-text">
+                    <div class="cardd-title">Inventory Stock</div>
+                    <div class="cardd-number">800 kg</div>
+                </div>
+                <div class="cardd-icon">
+                    <i class="fas fa-boxes"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!-- CHARTS -->
+                    <div class="row mt-4 g-3">
+                        <div class="col-md-6 d-flex">
+                            <div class="card p-3 w-100">
+                                <h3 class="text-center">📈 Milk Production Trend</h3>
+                                <div class="d-flex justify-content-center">
+                                    <canvas id="milkProductionChart" class="chart-container"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="card p-3 w-100">
+                                <h3 class="text-center">📊 Inventory Stock</h3>
+                                <div class="d-flex justify-content-center">
+                                    <canvas id="inventoryChart" class="chart-container"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 g-3">
+                        <div class="col-md-6 d-flex">
+                            <div class="card p-3 w-100">
+                                <h3 class="text-center">💵 Revenue vs Expenses</h3>
+                                <div class="d-flex justify-content-center">
+                                    <canvas id="financeChart" class="chart-container"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="card p-3 w-100">
+                                <h3 class="text-center">🛒 Order Distribution</h3>
+                                <div class="d-flex justify-content-center">
+                                    <canvas id="ordersChart" class="chart-container"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class=" mt-5">
+                    <!-- Success Alert (Hidden by Default) -->
+                    <div id="success-alert" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                        <strong>Success!</strong> Data has been updated.
+                        <button type="button" class="btn-close" onclick="hideAlert('success-alert')"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <!-- Error Alert (Hidden by Default) -->
+                    <div id="error-alert" class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+                        <strong>Error!</strong> Please fill out all fields before saving.
+                        <button type="button" class="btn-close" onclick="hideAlert('error-alert')"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="table-container">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <input type="text" class="form-control search-bar" id="searchInput" placeholder="Search stock..."
+                                      onkeyup="filterTable()">
+                                    <button class="btn btn-primary btnn" onclick="addStock()">Add Stock</button>
+                                  </div>
+                                <h3 class="mb-3 text-center">📊 Recent Milk Production Data</h3>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Milk Produced (L)</th>
+                                            <th>Cows Milked</th>
+                                            <th>Avg. Yield per Cow (L)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2025-02-24</td>
+                                            <td><input type="text" class="form-control input-field" value="750"></td>
+                                            <td><input type="text" class="form-control input-field" value="50"></td>
+                                            <td><input type="text" class="form-control input-field" value="15.0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2025-02-23</td>
+                                            <td><input type="text" class="form-control input-field" value="720"></td>
+                                            <td><input type="text" class="form-control input-field" value="48"></td>
+                                            <td><input type="text" class="form-control input-field" value="15.0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2025-02-22</td>
+                                            <td><input type="text" class="form-control input-field" value="800"></td>
+                                            <td><input type="text" class="form-control input-field" value="55"></td>
+                                            <td><input type="text" class="form-control input-field" value="14.5"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-primary mt-3" onclick="validateAndSave()">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+        </div>
+
+
+       
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/4.3.0/apexcharts.min.js"></script>
+    <script s rc="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script src="/Dashboard/js/analytics.js"></script>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("myNav").classList.toggle("active");
+        }
+
+
+
+        document.querySelectorAll('.overlay a').forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.overlay a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
