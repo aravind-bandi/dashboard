@@ -1,0 +1,264 @@
+/* Footer.css */
+.footer-container {
+  background-color: #fafafa;
+  color: #fff;
+  font-family: 'Whitney', 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #eaeaec;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px 0;
+  border-bottom: 1px solid #eaeaec;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #fff;
+}
+
+.help-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 250px;
+}
+
+.help-icon {
+  font-size: 24px;
+  color: #328E6E; /* Updated to primary green */
+  min-width: 40px;
+}
+
+.help-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #282c3f;
+}
+
+.help-card p {
+  font-size: 12px;
+  color: #535766;
+  margin: 0;
+}
+
+.footer-middle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 40px 5%;
+  background-color: #fafafa;
+}
+
+.footer-section h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #328E6E; /* Updated to primary green */
+  text-transform: uppercase;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 12px;
+}
+
+.footer-section a {
+  color: #535766;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.footer-section a:hover {
+  color: #67AE6E; /* Updated to secondary green */
+}
+
+.footer-section a svg {
+  margin-right: 8px;
+  font-size: 10px;
+  color: #94969f;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-download {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.app-download img {
+  height: 40px;
+  cursor: pointer;
+}
+
+.social-title {
+  margin-top: 20px;
+  color: #328E6E; /* Updated to primary green */
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #535766;
+  font-size: 16px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  background-color: #67AE6E; /* Updated to secondary green */
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: #fff;
+  border-top: 1px solid #eaeaec;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.copyright p {
+  color: #94969f;
+  font-size: 12px;
+  margin: 0;
+}
+
+.country-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #328E6E; /* Updated to primary green */
+  font-weight: 600;
+}
+
+.legal-links {
+  display: flex;
+  gap: 20px;
+}
+
+.legal-links a {
+  color: #94969f;
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.2s;
+}
+
+.legal-links a:hover {
+  color: #67AE6E; /* Updated to secondary green */
+}
+
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.payment-methods img {
+  height: 20px;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+.payment-methods img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* New green-themed elements */
+.footer-highlight {
+  color: #328E6E;
+}
+
+.footer-cta {
+  background-color: #E1EEBC; /* Light green background */
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.footer-cta h5 {
+  color: #328E6E;
+  margin-bottom: 10px;
+}
+
+.footer-cta p {
+  font-size: 12px;
+  color: #535766;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .footer-middle {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .footer-top {
+    justify-content: flex-start;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  
+  .help-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-middle {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .help-card {
+    width: 100%;
+  }
+}

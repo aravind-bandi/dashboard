@@ -1,0 +1,26 @@
+.Chart {
+  flex: 2;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.chart-item {
+  /* Ensure both charts share the space equally */
+  background-color: white;
+  width: 100%;
+  padding: 16px;
+
+ 
+}
+
+.home-container {
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  .Chart {
+    flex-direction: column; /* Stack charts vertically on smaller screens */
+    align-items: center;
+  }
+}

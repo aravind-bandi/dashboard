@@ -1,0 +1,740 @@
+.office-container {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #212121;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.office-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 15px 0;
+}
+
+.office-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.office-logo {
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  min-width: 150px;
+  color: #5D8736; /* Primary green */
+}
+
+.office-logo-text {
+  font-style: italic;
+}
+
+.office-search-container {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 20px;
+}
+
+.office-search {
+  display: flex;
+  width: 100%;
+}
+
+.office-search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.office-search-btn {
+  background-color: #5D8736; /* Primary green */
+  border: none;
+  padding: 0 20px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.office-search-btn:hover {
+  background-color: #809D3C; /* Darker green */
+}
+
+.office-cart-container {
+  min-width: 100px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.office-cart-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 10px;
+  color: #5D8736; /* Primary green */
+}
+
+.office-cart-icon i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.office-cart-count {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background-color: #A9C46C; /* Light green */
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.office-cart-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Main Content */
+.office-main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* Offers Banner */
+.office-offers-container {
+  margin: 20px 0;
+}
+
+.office-offers-banner {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+  height: 350px;
+}
+
+.office-offer-content-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.office-offer-text-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9f9f9 0%, #e8f5e9 100%);
+  z-index: 2;
+}
+
+.office-offer-badge {
+  background-color: #5D8736; /* Primary green */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: fit-content;
+}
+
+.office-offer-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #212121;
+}
+
+.office-offer-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+  color: #5D8736; /* Primary green */
+}
+
+.office-offer-description {
+  font-size: 16px;
+  color: #555;
+  margin: 0 0 25px 0;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+.office-offer-btn {
+  background-color: #5D8736; /* Primary green */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: fit-content;
+}
+
+.office-offer-btn:hover {
+  background-color: #809D3C; /* Darker green */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.office-offer-image-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.office-offer-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.office-offer-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.office-offer-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.office-offer-dot.active {
+  background-color: #5D8736; /* Primary green */
+}
+
+/* Rest of your existing CSS remains the same */
+/* Category Filter */
+.office-category-filter {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.office-category-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+
+.office-category-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.office-category-scroll::-webkit-scrollbar-thumb {
+  background-color: #A9C46C; /* Light green */
+  border-radius: 4px;
+}
+
+.office-category-btn {
+  background-color: #A9C46C;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.office-category-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.office-category-btn.active {
+  background-color: #5D8736; /* Primary green */
+  color: white;
+}
+
+/* Sort Options */
+.office-sort-options {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  padding: 0 10px;
+}
+
+.office-sort-label {
+  font-size: 14px;
+  margin-right: 10px;
+  color: #878787;
+}
+
+.office-sort-select {
+  padding: 8px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Products Grid */
+.office-products-container {
+  margin: 20px 0;
+}
+
+.office-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.office-product-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.office-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.office-product-image-container {
+  position: relative;
+  height: 200px;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.office-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  display: block;
+}
+
+.office-product-discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #5D8736; /* Primary green */
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.office-product-stock-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #A9C46C; /* Light green */
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.office-product-details {
+  padding: 15px;
+}
+
+.office-product-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+  color: #212121;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+}
+
+.office-product-description {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+  min-height: 36px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.office-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.office-rating-star {
+  color: #ddd;
+  font-size: 12px;
+}
+
+.office-rating-star.filled {
+  color: #ffb400;
+}
+
+.office-rating-count {
+  font-size: 12px;
+  color: #878787;
+  margin-left: 4px;
+}
+
+.office-product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.office-product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #212121;
+}
+
+.office-product-original-price {
+  font-size: 14px;
+  color: #878787;
+  text-decoration: line-through;
+}
+
+.office-product-delivery {
+  font-size: 12px;
+  color: #5D8736; /* Primary green */
+  margin: 0 0 12px 0;
+}
+
+.office-add-to-cart-btn {
+  width: 100%;
+  padding: 8px;
+  background-color: #5D8736; /* Primary green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.office-add-to-cart-btn:hover {
+  background-color: #809D3C; /* Darker green */
+}
+
+.office-add-to-cart-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.office-no-products {
+  text-align: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.office-no-products p {
+  font-size: 16px;
+  color: #878787;
+  margin-bottom: 20px;
+}
+
+.office-reset-filters {
+  padding: 8px 20px;
+  background-color: #5D8736; /* Primary green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.office-reset-filters:hover {
+  background-color: #809D3C; /* Darker green */
+}
+
+/* Shopping Cart Slide */
+.office-cart-slide {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1100;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.office-cart-slide.show {
+  transform: translateX(0);
+}
+
+.office-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #5D8736; /* Primary green */
+  color: white;
+}
+
+.office-cart-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.office-cart-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  padding: 0 10px;
+}
+
+.office-cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.office-cart-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.office-cart-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.office-cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.office-cart-item-details {
+  flex: 1;
+}
+
+.office-cart-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+.office-cart-item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5D8736; /* Primary green */
+  margin: 0 0 10px 0;
+}
+
+.office-cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.office-cart-item-action {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.office-cart-item-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.office-cart-item-quantity {
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.office-cart-item-remove {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #5D8736; /* Primary green */
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.office-cart-summary {
+  padding: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.office-cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #5D8736; /* Primary green */
+}
+
+.office-cart-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.office-cart-continue {
+  padding: 10px;
+  background-color: white;
+  color: #5D8736; /* Primary green */
+  border: 1px solid #5D8736;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.office-cart-continue:hover {
+  background-color: #F4FFC3; /* Light accent */
+}
+
+.office-cart-checkout {
+  padding: 10px;
+  background-color: #809D3C; /* Darker green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.office-cart-checkout:hover {
+  background-color: #5D8736; /* Primary green */
+}
+
+.office-cart-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.office-cart-empty-image {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.office-cart-empty p {
+  font-size: 16px;
+  color: #878787;
+  margin-bottom: 20px;
+}
+
+.office-cart-start-shopping {
+  padding: 10px 20px;
+  background-color: #5D8736; /* Primary green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.office-cart-start-shopping:hover {
+  background-color: #809D3C; /* Darker green */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .office-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .office-header-container {
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+  }
+  
+  .office-logo {
+    min-width: 100px;
+  }
+}

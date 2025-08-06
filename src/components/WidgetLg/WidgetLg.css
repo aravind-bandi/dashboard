@@ -1,0 +1,64 @@
+.WidgetLg{
+    flex: 2;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 25px;
+    border-radius: 10px;
+    /* background-color: teal; */
+    
+}
+.WidgetLgTitle
+{
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    /* color: #ebf1fe; */
+}
+.WidgetLgTable{
+    width: 100%;
+    border-spacing: 20px;
+}
+.WidgetLgTh{
+    text-align: left;
+    /* color: aliceblue; */
+}
+.WidgetLgUser{
+    display: flex;
+    align-items: center;
+    font-weight: 500; 
+}
+.WidgetLgName{
+    font-size: 20px;
+    /* color: #ebf1fe; */
+}
+
+.WidgetLgImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    margin-right: 10px;
+}
+.WidgetLgButton{
+    padding: 5px 8px;
+    border: none;
+    border-radius: 10px;
+}
+.WidgetLgButton.Approved{
+    background-color: #e6faf2;
+    color: #3bb077;
+}
+.WidgetLgButton.Pending{
+    background-color: #ebf1fe;
+    color: #2a7ade;
+}
+.WidgetLgButton.declined{
+    background-color: #fff0f1;
+    color: #d95084;
+}
+.WidgetLgButton.Cancled{
+    background: lightpink;
+    color: white;
+}
+.WidgetLgdate, .WidgetLgAmount{
+    font-weight: 300;
+    font-family: 'Courier New', Courier, monospace;
+}

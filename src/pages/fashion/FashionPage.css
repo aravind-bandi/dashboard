@@ -1,0 +1,513 @@
+/* Base Styles */
+.fashion-store {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.fashion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.fashion-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #328E6E;
+  margin: 0;
+}
+
+.fashion-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.fashion-nav-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.fashion-nav-btn:hover, .fashion-nav-btn.active {
+  color: #328E6E;
+  background-color: rgba(50, 142, 110, 0.1);
+}
+
+.fashion-cart-btn {
+  background-color: #328E6E;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.fashion-cart-btn:hover {
+  background-color: #67AE6E;
+}
+
+/* Banner Carousel */
+.fashion-banner-carousel {
+  position: relative;
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 300px;
+  background-color: #E1EEBC;
+}
+
+.fashion-banner-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.fashion-banner-slide {
+  min-width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E1EEBC;
+}
+
+.fashion-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  background-color: #E1EEBC; 
+}
+
+.fashion-banner-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.fashion-banner-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.fashion-banner-dot.active {
+  background-color: #328E6E;
+}
+
+/* Category Title */
+.fashion-category-title {
+  font-size: 22px;
+  margin: 20px;
+  color: #328E6E;
+  font-weight: 600;
+}
+
+/* Products Grid */
+.fashion-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+.fashion-product-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.fashion-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.fashion-product-img-container {
+  position: relative;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8; 
+  padding: 10px; 
+}
+
+.fashion-product-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.fashion-product-discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #67AE6E;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fashion-add-to-cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 8px;
+  background-color: #67AE6E;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  opacity: 0;
+}
+
+.fashion-product-card:hover .fashion-add-to-cart {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fashion-add-to-cart:hover {
+  background-color: #90C67C;
+}
+
+.fashion-product-details {
+  padding: 12px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.fashion-product-brand {
+  font-size: 13px;
+  color: #535766;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.fashion-product-title {
+  font-size: 13px;
+  color: #282c3f;
+  margin: 0 0 4px 4px;
+  line-height: 1.3;
+  height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.fashion-product-description {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 12px;
+  min-height: 28px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.fashion-product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.fashion-original-price {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 6px;
+  font-weight: 500;
+}
+.fashion-real-price {
+  font-size: 15px;
+  color: #328E6E;
+  font-weight: 700;
+}
+.fashion-product-rating {
+  display: flex;
+  align-items: center;
+}
+
+.fashion-rating-stars {
+  color: #ffd700;
+  font-size: 13px;
+  margin-right: 4px;
+}
+
+.fashion-rating-value {
+  font-size: 12px;
+  color: #535766;
+}
+
+/* Shopping Cart Sidebar */
+.fashion-cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.fashion-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  color: white;
+}
+
+.fashion-cart-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.fashion-cart-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+}
+
+.fashion-cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.fashion-cart-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.fashion-cart-item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.fashion-cart-item-details {
+  flex: 1;
+}
+
+.fashion-cart-item-details h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
+
+.fashion-cart-item-details p {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.fashion-cart-item-price {
+  font-weight: 600;
+  color: #328E6E;
+  font-size: 14px;
+}
+
+.fashion-cart-item-remove {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+  align-self: flex-start;
+}
+
+.fashion-cart-summary {
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+
+.fashion-cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #328E6E;
+}
+
+.fashion-checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #328E6E;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.fashion-checkout-btn:hover {
+  background-color: #67AE6E;
+}
+
+.fashion-cart-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.fashion-cart-empty p {
+  font-size: 16px;
+  color: #666;
+}
+
+.fashion-continue-shopping {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #328E6E;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.fashion-continue-shopping:hover {
+  background-color: #67AE6E;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .fashion-cart-sidebar {
+    width: 100%;
+  }
+  
+  .fashion-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+  
+  .fashion-product-card {
+    height: 260px;
+  }
+  
+  .fashion-product-img-container {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fashion-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .fashion-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .fashion-nav-btn {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+  
+  .fashion-banner-carousel {
+    height: 150px;
+  }
+  
+  .fashion-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 10px;
+  }
+  
+  .fashion-product-card {
+    height: 240px;
+  }
+  
+  .fashion-product-img-container {
+    height: 140px;
+  }
+  
+  .fashion-product-details {
+    padding: 10px;
+  }
+  
+  .fashion-cart-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

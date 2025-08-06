@@ -1,0 +1,453 @@
+/* feedbackk.css */
+.feedback-dashboard {
+  max-width: 1200px;
+  margin: 40px 0px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.feedback-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.feedback-header h1 {
+  color: #2c3e50;
+  font-size: 32px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.feedback-isolated-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.feedback-isolated-stat {
+  flex: 1;
+  padding: 25px 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.feedback-isolated-stat:hover {
+  transform: translateY(-3px);
+}
+
+.feedback-isolated-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.feedback-isolated-stat-label {
+  font-size: 16px;
+  color: #495057;
+  font-weight: 500;
+}
+
+.rating-stat {
+  background-color: #fff9db;
+  border-top: 4px solid #fcc419;
+}
+
+.feedback-stat {
+  background-color: #e6fcf5;
+  border-top: 4px solid #20c997;
+}
+
+.resolved-stat {
+  background-color: #ebfbee;
+  border-top: 4px solid #40c057;
+}
+
+.pending-stat {
+  background-color: #fff0f6;
+  border-top: 4px solid #f06595;
+}
+
+.feedback-isolated-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 992px) {
+  .feedback-isolated-main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.feedback-section, .complaints-section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+}
+
+.feedback-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.feedback-section-header h2 {
+  color: #2c3e50;
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.feedback-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feedback-filter-controls select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.feedback-cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.feedback-no-items {
+  text-align: center;
+  padding: 40px 20px;
+  color: #868e96;
+  font-style: italic;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.feedback-card {
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #adb5bd;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feedback-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-card.new {
+  border-left-color: #339af0;
+}
+
+.feedback-card.in-progress {
+  border-left-color: #f59f00;
+}
+
+.feedback-card.processed {
+  border-left-color: #51cf66;
+}
+
+.feedback-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feedback-customer {
+  font-weight: 600;
+  font-size: 17px;
+  color: #2c3e50;
+}
+
+.feedback-date {
+  color: #868e96;
+  font-size: 14px;
+}
+
+.feedback-status-badge {
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.feedback-status-badge.new {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+.feedback-status-badge.in-progress {
+  background-color: #fff3bf;
+  color: #e67700;
+}
+
+.feedback-status-badge.processed {
+  background-color: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.feedback-rating-stars {
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin: 5px 0;
+}
+
+.feedback-star {
+  color: #e9ecef;
+}
+
+.feedback-star.filled {
+  color: #ffd43b;
+}
+
+.feedback-comment {
+  line-height: 1.6;
+  color: #495057;
+  flex-grow: 1;
+  font-size: 15px;
+}
+
+.feedback-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.feedback-category {
+  padding: 5px 12px;
+  border-radius: 14px;
+  background-color: #f1f3f5;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.feedback-category.delivery {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+.feedback-category.product {
+  background-color: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.feedback-category.damage {
+  background-color: #ffe3e3;
+  color: #c92a2a;
+}
+
+.feedback-category.packaging {
+  background-color: #fff3bf;
+  color: #e67700;
+}
+
+.feedback-category.service {
+  background-color: #f3d9fa;
+  color: #862e9c;
+}
+
+.feedback-status-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
+  min-width: 140px;
+  cursor: pointer;
+}
+
+.feedback-complaint-card {
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #adb5bd;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feedback-complaint-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-complaint-card.new {
+  border-left-color: #339af0;
+}
+
+.feedback-complaint-card.pending {
+  border-left-color: #f59f00;
+}
+
+.feedback-complaint-card.in-progress {
+  border-left-color: #f59f00;
+}
+
+.feedback-complaint-card.resolved {
+  border-left-color: #51cf66;
+}
+
+.feedback-complaint-card.priority-critical {
+  border-left-width: 6px;
+  border-left-color: #fa5252;
+}
+
+.feedback-complaint-card.priority-high {
+  border-left-color: #ff922b;
+}
+
+.feedback-complaint-card.priority-medium {
+  border-left-color: #fcc419;
+}
+
+.feedback-complaint-card.priority-low {
+  border-left-color: #51cf66;
+}
+
+.feedback-complaint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feedback-complaint-issue, 
+.feedback-complaint-resolution {
+  line-height: 1.6;
+  color: #495057;
+  font-size: 15px;
+}
+
+.feedback-complaint-resolution {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.feedback-complaint-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.feedback-priority {
+  padding: 5px 12px;
+  border-radius: 14px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.feedback-priority.critical {
+  background-color: #ffe3e3;
+  color: #c92a2a;
+}
+
+.feedback-priority.high {
+  background-color: #fff3bf;
+  color: #e67700;
+}
+
+.feedback-priority.medium {
+  background-color: #d0ebff;
+  color: #1971c2;
+}
+
+.feedback-priority.low {
+  background-color: #d3f9d8;
+  color: #2b8a3e;
+}
+
+@media (max-width: 768px) {
+  .feedback-isolated-stats {
+    gap: 15px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .feedback-isolated-stat {
+    min-width: calc(50% - 10px);
+    padding: 20px 10px;
+  }
+  
+  .feedback-isolated-stat-value {
+    font-size: 28px;
+  }
+  
+  .feedback-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .feedback-filter-controls {
+    width: 100%;
+  }
+  
+  .feedback-filter-controls select {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .feedback-isolated-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .feedback-isolated-stat {
+    min-width: auto;
+  }
+  
+  .feedback-card-footer, 
+  .feedback-complaint-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .feedback-action-buttons {
+    width: 100%;
+  }
+  
+  .feedback-status-select {
+    width: 100%;
+  }
+}

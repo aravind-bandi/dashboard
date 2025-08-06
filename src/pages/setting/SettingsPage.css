@@ -1,0 +1,121 @@
+/* Main Container */
+.account-settings {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Section */
+.account-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.account-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.account-subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Content Sections */
+.account-content {
+  padding: 1rem;
+}
+
+.account-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.section-heading {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Elements */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #ff3e6c;
+}
+
+/* Checkbox Styling */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkbox {
+  margin-right: 0.8rem;
+  width: 18px;
+  height: 18px;
+  accent-color: #ff3e6c;
+}
+
+.checkbox-label {
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Button Styling */
+.primary-btn {
+  background: #ff3e6c;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: block;
+  margin: 2rem auto 0;
+}
+
+.primary-btn:hover {
+  background: #e0355f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-settings {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .account-title {
+    font-size: 1.6rem;
+  }
+}

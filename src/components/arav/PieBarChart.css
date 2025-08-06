@@ -1,0 +1,16 @@
+.charts-container {
+    flex: 1;
+    display: flex;         /* Flexbox layout to display charts side by side */
+    gap: 20px;             /* Adds space between the charts */
+    justify-content: center; /* Center the charts */
+    margin-top: 30px;      /* Adds space from the top */
+  }
+  
+  .chart-item {
+    
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  

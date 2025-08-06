@@ -1,0 +1,216 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin:45px 0px auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.dashboard-header h1 {
+  color: #2c3e50;
+  font-size: 28px;
+}
+
+.notification-badges {
+  display: flex;
+  gap: 15px;
+}
+
+.inventory-badge, .order-badge {
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.inventory-badge {
+  background-color: #ffeaa7;
+  color: #d35400;
+}
+
+.order-badge {
+  background-color: #a5d8ff;
+  color: #1864ab;
+}
+
+/* Main Content Styles */
+.dashboard-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.alerts-section {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  height: fit-content;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  color: #2c3e50;
+  font-size: 20px;
+}
+
+.mark-all-read {
+  background-color: #f1f3f5;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #495057;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mark-all-read:hover:not(:disabled) {
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+.mark-all-read:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Alert Cards Styles */
+.alerts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.alert-card {
+  display: flex;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  border-left: 4px solid transparent;
+}
+
+.alert-card.unread {
+  background-color: #f8f9fa;
+  border-left-color: #339af0;
+}
+
+.alert-card.read {
+  background-color: white;
+  opacity: 0.9;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.unread-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: #339af0;
+  border-radius: 50%;
+}
+
+.alert-icon {
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-content h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.alert-content p {
+  font-size: 14px;
+  color: #495057;
+  margin-bottom: 5px;
+}
+
+.alert-date {
+  font-size: 12px;
+  color: #868e96;
+}
+
+.no-alerts {
+  text-align: center;
+  padding: 20px;
+  color: #868e96;
+  font-style: italic;
+}
+
+/* Alert Type Specific Styles */
+.alert-card.low-stock .alert-icon {
+  color: #f76707;
+}
+
+.alert-card.expiry .alert-icon {
+  color: #e67700;
+}
+
+.alert-card.replenishment .alert-icon {
+  color: #5c940d;
+}
+
+.alert-card.new-order .alert-icon {
+  color: #2b8a3e;
+}
+
+.alert-card.cancellation .alert-icon {
+  color: #c92a2a;
+}
+
+.alert-card.reschedule .alert-icon {
+  color: #5f3dc4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
